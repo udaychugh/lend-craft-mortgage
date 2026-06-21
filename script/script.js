@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="col-span-1 md:col-span-1 flex flex-col gap-6">
           <a class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2" href="${pathPrefix}index.html">
             <img src="${pathPrefix}assets/logo.webp" alt="Lend Craft Mortgage Logo" class="h-8 w-auto object-contain" />
-            Lend Craft
           </a>
           <div class="flex flex-col gap-3">
             <a class="flex items-center gap-3 font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="tel:0470347232">
