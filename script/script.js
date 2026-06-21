@@ -130,8 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
         <!-- Brand -->
         <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2" href="${pathPrefix}index.html">
-          <span aria-hidden="true" class="material-symbols-outlined text-[32px]">real_estate_agent</span>
-          Lend Craft Mortgage
+          <img src="${pathPrefix}assets/logo.webp" alt="Lend Craft Mortgage Logo" class="h-10 w-auto object-contain" />
         </a>
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
@@ -166,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Brand & Contact -->
         <div class="col-span-1 md:col-span-1 flex flex-col gap-6">
           <a class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2" href="${pathPrefix}index.html">
-            <span aria-hidden="true" class="material-symbols-outlined text-[28px]">real_estate_agent</span>
+            <img src="${pathPrefix}assets/logo.webp" alt="Lend Craft Mortgage Logo" class="h-8 w-auto object-contain" />
             Lend Craft
           </a>
           <div class="flex flex-col gap-3">
@@ -187,10 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Links -->
         <div class="col-span-1 flex flex-col gap-4 mt-8 md:mt-0">
           <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-2">Services</h4>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}index.html#services">Home Loans</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}index.html#services">First Home Buyers</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}index.html#services">Investment Loans</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}index.html#services">Refinancing</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/home_loans.html">Home Loans</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/first_home_buyers.html">First Home Buyers</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/investment_loans.html">Investment Loans</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/refinancing.html">Refinancing</a>
         </div>
         <!-- Legal -->
         <div class="col-span-1 flex flex-col gap-4 mt-8 md:mt-0">
