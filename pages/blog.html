@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Blog & Insights | Lend Craft Mortgage</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <script src="../script/script.js"></script>
+  <link href="../style/style.css" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+  <!-- Top Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+    <!-- Hero Header -->
+    <header class="text-center max-w-3xl mx-auto mb-16 space-y-6">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-surface-ice border border-outline-variant/30 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">Lend Craft Insights</span>
+      <h1 class="font-display-lg text-display-lg text-primary tracking-tight">Expert Advice & Mortgage Tips</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">
+        Stay up to date with the latest Australian property market trends, home loan tips, refinancing strategies, and interest rate updates.
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="blog-filters">
+      <button class="px-5 py-2 rounded-full border border-primary bg-primary text-white font-label-md text-label-md transition-all shadow-sm cursor-pointer" data-category="all">All Articles</button>
+      <button class="px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-category="buying">Home Buying</button>
+      <button class="px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-category="refinance">Refinancing</button>
+      <button class="px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-category="investing">Property Investing</button>
+    </div>
+
+    <!-- Blog Articles Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="blog-grid">
+      <!-- Article 1 -->
+      <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group" data-category="buying">
+        <div class="h-52 overflow-hidden relative">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx-4RQ5Dh7vkvskFzPas4toLYBrK2rq288S7EgKxZQmu3j21a1pgyIrRo5URvqAT9P6Ri-IaPLe8FZeiytPsP96X2Tgqd8KVv03jsh07ig1feI08Fz7tJR31ClN5hTglZJ9uJTtHmUKFI9-tKpngrkIRWGk1ylldXGW7kCCoKchEJHlxWP3dTSQxdzzZ15cAOL5r33-27Nl8TW3oV71Q1Ji8y-2-oN6SH9UXIwQibKXodDtTxvRDTWjb0qLRopjc0ngRtZfOWm9g" alt="Sydney harbor property" />
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">Home Buying</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> June 18, 2026</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read</span>
+            </div>
+            <h3 class="font-headline-md text-body-lg font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors">
+              <a href="#">5 Essential Tips for First-Home Buyers in Australia</a>
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+              Learn about government grants, Deposit Schemes, Lenders Mortgage Insurance (LMI), and how to set a realistic budget for your first property.
+            </p>
+          </div>
+          <a class="font-label-md text-label-md text-primary hover:text-secondary inline-flex items-center gap-2 mt-auto" href="#">
+            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group" data-category="refinance">
+        <div class="h-52 overflow-hidden relative">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMyJBN1Ppt4SnIJaF5fLl_S9KCAVupNwKwnt5IqVBrfKAMMmp-xEr11j4U1T5daPfAvn1vkYBOS7JUh-UgOJzkRJaduyLNQRHSFOVfQKW26SLd_q8pilFCKEvjPlyK-_9L6yMyYhVaCCQUvUVbGyXQ2ZJ9LNY6zdOM2cMUC1WxNlsm8LhSxzyLw2uBgGyYDLwJ0UpDxyRVFNwYDkNy7hjhC8XJyG8Nmog4DmDFnXzSz-GLzmCTl8QUIYrhYRKErjFgbNi4yPO7bA" alt="Melbourne skyline" />
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">Refinancing</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> June 12, 2026</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 4 min read</span>
+            </div>
+            <h3 class="font-headline-md text-body-lg font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors">
+              <a href="#">Is Refinancing Right for You? How to Calculate Savings</a>
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+              Interest rates fluctuate. We break down the true cost of refinancing, exit fees, and how to spot a genuinely better deal.
+            </p>
+          </div>
+          <a class="font-label-md text-label-md text-primary hover:text-secondary inline-flex items-center gap-2 mt-auto" href="#">
+            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group" data-category="buying">
+        <div class="h-52 overflow-hidden relative">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLvto5PT25oNSQrS_8hIngPGbQssYDZMvsr9e6gQZJjOnxbqqw3_n3nFZGC5Kd7Qw6gSUyIHBaYz0iL5kLcF07ZBgLeGJNIb5o2hqYcXUs9q7OZApkTDZEhY8B3HsPHoR3uDUWxtbc6dhbtgt0N_jqU3qGC3WioD2erDlh9YxGBcizoonLBSas9mUmtkuGnVEtb4BswubHAvksTKQn-wkhMUvwhNPtbtw013Y0u3ewY-TDYZFw-UvK6J" alt="Happy homeowners" />
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">Home Loans</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> June 05, 2026</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 6 min read</span>
+            </div>
+            <h3 class="font-headline-md text-body-lg font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors">
+              <a href="#">Understanding LVR and How It Saves You Money</a>
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+              Loan-to-Value Ratio (LVR) is the single biggest factor in the rate you are offered. Find out how passing the 80% LVR threshold can waive your LMI fees.
+            </p>
+          </div>
+          <a class="font-label-md text-label-md text-primary hover:text-secondary inline-flex items-center gap-2 mt-auto" href="#">
+            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group" data-category="investing">
+        <div class="h-52 overflow-hidden relative">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8ZiSpJ7QYJuzFFARwya4TgKUsmPZXPcmXB7JtUiY21KTzeETVQtUb1mjIQCuNkgEmYFuf_k2jrG_Eu4f5IROpofCgARGHMa2Nnb_v4ddACzhWGFvLEaEmhdszJWg60lY3X_hxVKLeFAF7P5e8N8sJc6C9JWkYKM6GNmkBr4D9KY9WwxHklVe-SJoTmcMyigvB91TE6pFwjQ9q3eBOaL9tuquU91jfjpIlDMqiP7bhBc3XGp33r0IcmSEayu10Il8b5HAPSZmLIg" alt="Brisbane skyline Story Bridge" />
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">Property Investing</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> May 28, 2026</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read</span>
+            </div>
+            <h3 class="font-headline-md text-body-lg font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors">
+              <a href="#">Structured Finance Tips for Australian Investors</a>
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+              Maximize your borrowing power using offset accounts, equity release, and interest-only structures to build a scalable investment portfolio.
+            </p>
+          </div>
+          <a class="font-label-md text-label-md text-primary hover:text-secondary inline-flex items-center gap-2 mt-auto" href="#">
+            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group" data-category="buying">
+        <div class="h-52 overflow-hidden relative">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo8fwJK0o4gU5MRc1KvQxBjGteOTdvRxWCntSZRtimBiFRbVp30p7wCf6zjMfIZVsTx1N3YLiCaeEaQvuFtrgwSzdAKKzpyO3zt-C6QalVCMi-_-ALms0-pbkD2cxxJc62JSHmhc8iAY2qzOYGAheDm4pvvr4uojAR1NTRPTzspmguKt_e5wT_STz-Gqn2_NxgU5usIfAjdcItEoin2Ihn9OQ461YgvFgVT5SKuy0o9d0Y3d84NhBxc3caXnBL59eTRtcXHnC6GA" alt="Perth city Swan river" />
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">Home Buying</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> May 20, 2026</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 4 min read</span>
+            </div>
+            <h3 class="font-headline-md text-body-lg font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors">
+              <a href="#">Buying Strata: Strata Levies &amp; Inspection Reports</a>
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+              When buying an apartment or townhouse, strata fees are a major monthly outlay. Learn how to review strata records for issues before signing.
+            </p>
+          </div>
+          <a class="font-label-md text-label-md text-primary hover:text-secondary inline-flex items-center gap-2 mt-auto" href="#">
+            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+</body>
+</html>
