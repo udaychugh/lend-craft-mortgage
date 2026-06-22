@@ -1,6 +1,27 @@
+:root {
+  --color-primary: #005460;
+  --color-primary-rgb: 0, 84, 96;
+  --color-secondary: #36656d;
+  --color-tertiary: #6e4212;
+  --color-background: #f9f9fa;
+  --color-surface: #f9f9fa;
+  --color-on-background: #1a1c1d;
+  --color-on-surface: #1a1c1d;
+  --color-on-surface-variant: #3f484a;
+  --color-outline-variant: #bfc8cb;
+  --color-surface-ice: #F4FAFB;
+  --color-surface-variant: #e2e2e3;
+  --color-primary-container: #226d7a;
+  --color-secondary-container: #b8e8f1;
+  --color-tertiary-container: #8a5928;
+  --color-primary-fixed: #a9edfc;
+  --color-secondary-fixed: #bbebf4;
+  --color-tertiary-fixed: #ffdcc0;
+}
+
 body {
-  background-color: #f9f9fa; /* colors.background / colors.surface */
-  color: #1a1c1d; /* colors.on-background / colors.on-surface */
+  background-color: var(--color-background); /* colors.background / colors.surface */
+  color: var(--color-on-background); /* colors.on-background / colors.on-surface */
 }
 
 /* Material symbols variations */
@@ -26,7 +47,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(224, 231, 233, 0.5);
-  box-shadow: 0 10px 20px -5px rgba(0, 84, 96, 0.04);
+  box-shadow: 0 10px 20px -5px rgba(var(--color-primary-rgb), 0.04);
 }
 
 .text-gradient {
@@ -35,14 +56,14 @@ body {
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(
     90deg,
-    #005460, /* primary */
-    #36656d  /* secondary */
+    var(--color-primary), /* primary */
+    var(--color-secondary)  /* secondary */
   );
 }
 
 /* Shadows and animations */
 .ambient-shadow {
-  box-shadow: 0 10px 20px -4px rgba(0, 84, 96, 0.04);
+  box-shadow: 0 10px 20px -4px rgba(var(--color-primary-rgb), 0.04);
 }
 
 .ambient-shadow-hover {
@@ -50,7 +71,7 @@ body {
 }
 
 .ambient-shadow-hover:hover {
-  box-shadow: 0 15px 30px -5px rgba(0, 84, 96, 0.08);
+  box-shadow: 0 15px 30px -5px rgba(var(--color-primary-rgb), 0.08);
   transform: translateY(-2px);
 }
 
@@ -61,17 +82,17 @@ body {
   background-color: transparent;
   border-width: 0;
   border-bottom-width: 1px;
-  border-color: #bfc8cb; /* outline-variant */
+  border-color: var(--color-outline-variant); /* outline-variant */
   padding-left: 0;
   padding-right: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #1a1c1d; /* on-surface */
+  color: var(--color-on-surface); /* on-surface */
   transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .form-input-thick-label:focus {
-  border-color: #005460; /* primary */
+  border-color: var(--color-primary); /* primary */
   outline: none;
   box-shadow: none;
 }
@@ -83,6 +104,14 @@ body {
   line-height: 20px;
   letter-spacing: 0.05em;
   font-weight: 600;
-  color: #3f484a; /* on-surface-variant */
+  color: var(--color-on-surface-variant); /* on-surface-variant */
   margin-bottom: 0.25rem;
 }
+
+/* Theme color overlay filter for brand logo */
+img[alt="Lend Craft Mortgage Logo"] {
+  filter: url(#logo-theme-filter);
+  -webkit-filter: url(#logo-theme-filter);
+}
+
+
