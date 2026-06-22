@@ -213,13 +213,15 @@ function initializeApp() {
               <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
             </button>
             <!-- Dropdown Menu -->
-            <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-1.5 w-48 rounded-md bg-[#1a1c1d] border border-white/10 shadow-xl focus:outline-none z-[60] py-1" role="menu">
-              ${themes.map(t => `
-                <button data-theme-id="${t.id}" class="flex items-center gap-2.5 w-full text-left px-3 py-2 text-[11px] text-white/80 hover:text-white hover:bg-white/10 transition-colors" role="menuitem">
-                  <span class="w-2.5 h-2.5 rounded-full border border-white/20 shrink-0" style="background-color: ${t.colors.primary}"></span>
-                  <span>${t.id.toUpperCase().replace("-", " ")}: ${t.name}</span>
-                </button>
-              `).join("")}
+            <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-1.5 w-[800px] max-w-[calc(100vw-32px)] rounded-md bg-[#1a1c1d] border border-white/10 shadow-xl focus:outline-none z-[60] p-2" role="menu">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1">
+                ${themes.map(t => `
+                  <button data-theme-id="${t.id}" class="flex items-center gap-2 w-full text-left px-2 py-1.5 text-[11px] text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-md" role="menuitem">
+                    <span class="w-2.5 h-2.5 rounded-full border border-white/20 shrink-0" style="background-color: ${t.colors.primary}"></span>
+                    <span class="truncate">${t.id.toUpperCase().replace("-", " ")}: ${t.name}</span>
+                  </button>
+                `).join("")}
+              </div>
             </div>
           </div>
         </div>

@@ -319,6 +319,166 @@ window.THEME_CONFIG = {
         "primary-fixed": "#B2DFCE",
         "secondary-fixed": "#DCEFE7"
       }
+    },
+    {
+      id: "type-21",
+      name: "Zomato Red",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#E23744",
+        "primary-rgb": "226, 55, 68",
+        "secondary": "#2D2D2D",
+        "tertiary": "#CB202D",
+        "surface-ice": "#FDF4F5",
+        "primary-container": "#A1141E",
+        "secondary-container": "#FAD9DB",
+        "primary-fixed": "#FBB6BB",
+        "secondary-fixed": "#FCE6E8"
+      }
+    },
+    {
+      id: "type-22",
+      name: "Swiggy Orange",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#FC8019",
+        "primary-rgb": "252, 128, 25",
+        "secondary": "#3D4152",
+        "tertiary": "#FC8019",
+        "surface-ice": "#FFF6F0",
+        "primary-container": "#B24D00",
+        "secondary-container": "#FEECE0",
+        "primary-fixed": "#FED1B2",
+        "secondary-fixed": "#FFEAE0"
+      }
+    },
+    {
+      id: "type-23",
+      name: "Paytm Blue",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#00baf2",
+        "primary-rgb": "0, 186, 242",
+        "secondary": "#002E6E",
+        "tertiary": "#00baf2",
+        "surface-ice": "#F0FBFE",
+        "primary-container": "#007399",
+        "secondary-container": "#E0F7FE",
+        "primary-fixed": "#B2EDFC",
+        "secondary-fixed": "#D6F5FE"
+      }
+    },
+    {
+      id: "type-24",
+      name: "Ola Green",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#A3D82A",
+        "primary-rgb": "163, 216, 42",
+        "secondary": "#222222",
+        "tertiary": "#74A612",
+        "surface-ice": "#F9FCF2",
+        "primary-container": "#557E0A",
+        "secondary-container": "#EEF9D6",
+        "primary-fixed": "#E1F5B5",
+        "secondary-fixed": "#EFFBD4"
+      }
+    },
+    {
+      id: "type-25",
+      name: "Flipkart Blue",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#2874F0",
+        "primary-rgb": "40, 116, 240",
+        "secondary": "#FFE000",
+        "tertiary": "#2874F0",
+        "surface-ice": "#F2F6FE",
+        "primary-container": "#0F47A1",
+        "secondary-container": "#FFFCD9",
+        "primary-fixed": "#CDDDFB",
+        "secondary-fixed": "#FFFAE6"
+      }
+    },
+    {
+      id: "type-26",
+      name: "PhonePe Purple",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#5F259F",
+        "primary-rgb": "95, 37, 159",
+        "secondary": "#00B56A",
+        "tertiary": "#481682",
+        "surface-ice": "#F7F2FC",
+        "primary-container": "#3A0C6B",
+        "secondary-container": "#E1FBEF",
+        "primary-fixed": "#E1CCF7",
+        "secondary-fixed": "#E6FDF4"
+      }
+    },
+    {
+      id: "type-27",
+      name: "Meesho Pink",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#F43397",
+        "primary-rgb": "244, 51, 151",
+        "secondary": "#353543",
+        "tertiary": "#D61C7C",
+        "surface-ice": "#FCF2F7",
+        "primary-container": "#A80E62",
+        "secondary-container": "#FEE5F3",
+        "primary-fixed": "#FDBCE2",
+        "secondary-fixed": "#FFEBF6"
+      }
+    },
+    {
+      id: "type-28",
+      name: "CRED Mint",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#00E676",
+        "primary-rgb": "0, 230, 118",
+        "secondary": "#0F172A",
+        "tertiary": "#00B0FF",
+        "surface-ice": "#F0FDF4",
+        "primary-container": "#008037",
+        "secondary-container": "#D4EDDA",
+        "primary-fixed": "#A6F7C7",
+        "secondary-fixed": "#D6FBE6"
+      }
+    },
+    {
+      id: "type-29",
+      name: "Nykaa Pink",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#FC2779",
+        "primary-rgb": "252, 39, 121",
+        "secondary": "#3F414D",
+        "tertiary": "#E51A60",
+        "surface-ice": "#FCF2F6",
+        "primary-container": "#B2064C",
+        "secondary-container": "#FEE3EE",
+        "primary-fixed": "#FDB7D5",
+        "secondary-fixed": "#FFEBF3"
+      }
+    },
+    {
+      id: "type-30",
+      name: "Zerodha Blue",
+      logo: "assets/logo.webp",
+      colors: {
+        "primary": "#387ED1",
+        "primary-rgb": "56, 126, 209",
+        "secondary": "#FF5722",
+        "tertiary": "#387ED1",
+        "surface-ice": "#F3F7FD",
+        "primary-container": "#1F5396",
+        "secondary-container": "#FFEBE5",
+        "primary-fixed": "#D0E2F7",
+        "secondary-fixed": "#FFE2D9"
+      }
     }
   ]
 };
