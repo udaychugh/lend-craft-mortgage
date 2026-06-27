@@ -523,7 +523,7 @@ function initializeApp() {
     revealElements.forEach(el => revealObserver.observe(el));
   }
 
-  // Custom Video Player Interaction
+  // Custom Video Player Interaction with Tabs Manager
   const videoContainer = document.querySelector(".video-container");
   if (videoContainer) {
     const video = videoContainer.querySelector("video");
@@ -540,6 +540,100 @@ function initializeApp() {
     
     if (playBtn) playBtn.addEventListener("click", playVideo);
     if (overlay) overlay.addEventListener("click", playVideo);
+  }
+
+  const videoShowcaseSection = document.querySelector(".video-showcase-section");
+  if (videoShowcaseSection) {
+    const tabButtons = videoShowcaseSection.querySelectorAll(".video-tab-btn");
+    const videoTitle = videoShowcaseSection.querySelector(".video-dynamic-title");
+    const videoDesc = videoShowcaseSection.querySelector(".video-dynamic-desc");
+    const videoList = videoShowcaseSection.querySelector(".video-dynamic-list");
+    const videoElement = videoShowcaseSection.querySelector("video");
+    const videoOverlay = videoShowcaseSection.querySelector(".video-overlay");
+    const fadeElements = videoShowcaseSection.querySelectorAll(".fade-content");
+    
+    const tabData = {
+      "first-home": {
+        title: "Secure Your First Home, Sooner.",
+        desc: "Stepping onto the property ladder doesn't have to be intimidating. We help you navigate the entire journey—from understanding deposits, mapping out state grants, to finding the absolute right lender.",
+        list: [
+          "Explain and unlock the First Home Guarantee (FHBG) scheme",
+          "Assess your borrowing capacity with low-deposit options",
+          "Complete pre-approval in days so you can make offers confidently"
+        ],
+        videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-happy-family-in-their-new-home-40243-large.mp4",
+        poster: "assets/hero-image.webp"
+      },
+      "refinance": {
+        title: "Lower Your Rates & Consolidate Debt.",
+        desc: "Don't let loyalty cost you. We negotiate directly with over 40+ lenders to secure competitive loan rates, lower monthly fees, or extract equity for home renovations and investment projects.",
+        list: [
+          "Perform a free mortgage health check on your current interest rate",
+          "Access hidden cashback deals and special interest-only structures",
+          "Consolidate external debts into a single, low-interest repayment"
+        ],
+        videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-keys-in-hand-of-a-real-estate-agent-holding-a-house-model-40245-large.mp4",
+        poster: "assets/hero-image.webp"
+      },
+      "investors": {
+        title: "Accelerate Wealth via Smart Property Investment.",
+        desc: "Set up your loans correctly from day one. We design sophisticated multi-property loan portfolios, utilizing tax offset accounts, negative gearing advantages, and equity refinancing strategies.",
+        list: [
+          "Set up dynamic offset accounts to save thousands on interest",
+          "Formulate tax-effective structures (Interest-Only, Split Loans)",
+          "Leverage current property equity to purchase your next investment"
+        ],
+        videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-real-estate-agent-showing-a-house-model-to-a-client-40244-large.mp4",
+        poster: "assets/hero-image.webp"
+      }
+    };
+    
+    const switchTab = (tabId) => {
+      const data = tabData[tabId];
+      if (!data) return;
+      
+      fadeElements.forEach(el => el.classList.add("fade-out"));
+      
+      setTimeout(() => {
+        if (videoTitle) videoTitle.textContent = data.title;
+        if (videoDesc) videoDesc.textContent = data.desc;
+        
+        if (videoList) {
+          videoList.innerHTML = data.list.map(item => `
+            <li class="flex items-center gap-3 text-on-surface font-label-md">
+              <span class="material-symbols-outlined text-success-teal bg-success-teal/10 p-1 rounded-full text-base">check</span>
+              ${item}
+            </li>
+          `).join("");
+        }
+        
+        if (videoElement) {
+          videoElement.src = data.videoSrc;
+          videoElement.setAttribute("poster", data.poster);
+          videoElement.removeAttribute("controls");
+          videoElement.load();
+        }
+        
+        if (videoOverlay) {
+          videoOverlay.classList.remove("hidden");
+        }
+        
+        fadeElements.forEach(el => el.classList.remove("fade-out"));
+      }, 350);
+    };
+    
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => {
+          b.classList.remove("bg-primary", "text-white", "border-transparent");
+          b.classList.add("bg-white", "text-on-surface-variant", "border-outline-variant/60");
+        });
+        btn.classList.add("bg-primary", "text-white", "border-transparent");
+        btn.classList.remove("bg-white", "text-on-surface-variant", "border-outline-variant/60");
+        
+        switchTab(btn.getAttribute("data-tab"));
+      });
+    });
   }
 
   // Testimonial Carousel Slider (Mobile view slider)
@@ -662,6 +756,114 @@ function initializeApp() {
       
       goToSlide(0);
     }
+  }
+
+  // Hero Mouse Parallax Effect
+  const heroHeader = document.querySelector("header.relative");
+  if (heroHeader && window.innerWidth >= 1024) {
+    const slowBg = heroHeader.querySelector(".parallax-bg-slow");
+    const fastBg = heroHeader.querySelector(".parallax-bg-fast");
+    const heroCard = heroHeader.querySelector(".parallax-layer");
+    
+    heroHeader.addEventListener("mousemove", (e) => {
+      const width = heroHeader.offsetWidth;
+      const height = heroHeader.offsetHeight;
+      const rect = heroHeader.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left - (width / 2);
+      const mouseY = e.clientY - rect.top - (height / 2);
+      
+      const xPct = mouseX / (width / 2);
+      const yPct = mouseY / (height / 2);
+      
+      if (slowBg) {
+        slowBg.style.transform = `translate(${xPct * 25}px, ${yPct * 25}px) translate(33.33%, -33.33%)`;
+      }
+      if (fastBg) {
+        fastBg.style.transform = `translate(${-xPct * 35}px, ${-yPct * 35}px) translate(-33.33%, 33.33%)`;
+      }
+      if (heroCard) {
+        heroCard.style.transform = `translate(${xPct * 12}px, ${yPct * 12}px)`;
+      }
+    });
+    
+    heroHeader.addEventListener("mouseleave", () => {
+      if (slowBg) slowBg.style.transform = `translate(0, 0) translate(33.33%, -33.33%)`;
+      if (fastBg) fastBg.style.transform = `translate(0, 0) translate(-33.33%, 33.33%)`;
+      if (heroCard) heroCard.style.transform = `translate(0, 0)`;
+    });
+  }
+
+  // Dynamic Statistics Count-Up Animation
+  const statsElements = document.querySelectorAll("[data-count]");
+  if (statsElements.length > 0) {
+    const countUp = (el) => {
+      const target = parseInt(el.getAttribute("data-count"), 10);
+      const duration = 2000;
+      const stepTime = 30;
+      const steps = duration / stepTime;
+      let current = 0;
+      const increment = target / steps;
+      const suffix = el.textContent.replace(/[0-9]/g, "");
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current) + suffix;
+        }
+      }, stepTime);
+    };
+    
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statsElements.forEach(el => statsObserver.observe(el));
+  }
+
+  // Quick Borrowing Estimator Sliders logic
+  const incomeSlider = document.getElementById("quick-income");
+  const debtSlider = document.getElementById("quick-debts");
+  if (incomeSlider && debtSlider) {
+    const incomeValDisplay = document.getElementById("quick-income-val");
+    const debtValDisplay = document.getElementById("quick-debts-val");
+    const powerResultDisplay = document.getElementById("quick-power-result");
+    const repaymentResultDisplay = document.getElementById("quick-repayment-result");
+    const estimatorProgress = document.getElementById("estimator-progress");
+    
+    const calculatePower = () => {
+      const income = parseInt(incomeSlider.value, 10);
+      const debts = parseInt(debtSlider.value, 10);
+      
+      incomeValDisplay.textContent = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(income);
+      debtValDisplay.textContent = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(debts);
+      
+      const disposable = Math.max(0, income - debts - 2200);
+      const borrowingPower = Math.min(1800000, disposable * 12 * 5.8);
+      
+      powerResultDisplay.textContent = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(borrowingPower);
+      
+      const monthlyRepayment = (borrowingPower / 100000) * 600;
+      repaymentResultDisplay.textContent = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(monthlyRepayment) + "/mo";
+      
+      const percentage = Math.min(100, (borrowingPower / 1800000) * 100);
+      if (estimatorProgress) {
+        estimatorProgress.style.width = `${percentage}%`;
+      }
+    };
+    
+    [incomeSlider, debtSlider].forEach(slider => {
+      slider.addEventListener("input", calculatePower);
+    });
+    
+    calculatePower();
   }
 
   // Ensure theme properties (including logo overlay masks) are fully set on load

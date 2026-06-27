@@ -33,10 +33,10 @@
     <header class="relative pt-24 pb-32 overflow-hidden bg-surface-ice">
       <!-- Abstract Shapes -->
       <div
-        class="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary-fixed rounded-full blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3 z-0 pointer-events-none"
+        class="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary-fixed rounded-full blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3 z-0 pointer-events-none parallax-bg-slow"
       ></div>
       <div
-        class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-fixed rounded-full blur-[100px] opacity-30 -translate-x-1/3 translate-y-1/3 z-0 pointer-events-none"
+        class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-fixed rounded-full blur-[100px] opacity-30 -translate-x-1/3 translate-y-1/3 z-0 pointer-events-none parallax-bg-fast"
       ></div>
       <div
         class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10"
@@ -95,8 +95,8 @@
               class="flex items-center gap-6 mt-4 pt-8 border-t border-outline-variant/50"
             >
               <div class="flex flex-col">
-                <span class="font-headline-md text-headline-md text-on-surface"
-                  >40+</span
+                <span class="font-headline-md text-headline-md text-on-surface" data-count="40"
+                  >0+</span
                 >
                 <span
                   class="font-label-sm text-label-sm text-on-surface-variant"
@@ -105,8 +105,8 @@
               </div>
               <div class="w-px h-12 bg-outline-variant/50"></div>
               <div class="flex flex-col">
-                <span class="font-headline-md text-headline-md text-on-surface"
-                  >100%</span
+                <span class="font-headline-md text-headline-md text-on-surface" data-count="100"
+                  >0%</span
                 >
                 <span
                   class="font-label-sm text-label-sm text-on-surface-variant"
@@ -115,42 +115,93 @@
               </div>
             </div>
           </div>
-          <!-- Media -->
-          <div
-            class="relative w-full h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-2xl border border-outline-variant/30 glass-panel"
-          >
-            <img
-              alt="Lifestyle image of happy homeowners"
-              class="absolute inset-0 w-full h-full object-cover"
-              src="assets/hero-image.webp"
-            />
-            <!-- Overlay Card -->
+          <!-- Media Column: Interactive Estimator -->
+          <div class="w-full flex items-center justify-center">
+            <!-- Estimator Card -->
             <div
-              class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md border border-white p-6 rounded-lg shadow-lg"
+              class="relative w-full max-w-lg p-8 rounded-xl bg-white/75 backdrop-blur-lg border border-outline-variant/30 shadow-2xl glass-panel parallax-layer"
             >
-              <div class="flex items-start justify-between mb-4">
-                <div>
-                  <h3
-                    class="font-headline-md text-headline-md text-primary mb-1"
-                  >
-                    Ready to buy?
-                  </h3>
-                  <p class="font-body-md text-body-md text-on-surface-variant">
-                    Let's calculate your borrowing power.
-                  </p>
-                </div>
-                <div
-                  class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary"
-                >
-                  <span aria-hidden="true" class="material-symbols-outlined"
-                    >calculate</span
-                  >
-                </div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="material-symbols-outlined text-primary text-[28px]">calculate</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                  Quick Borrowing Estimator
+                </h3>
               </div>
-              <div
-                class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden"
-              >
-                <div class="h-full bg-primary w-1/3"></div>
+              
+              <div class="flex flex-col gap-6">
+                <!-- Income Slider -->
+                <div class="flex flex-col gap-2">
+                  <div class="flex justify-between items-center">
+                    <label class="font-label-md text-on-surface-variant font-semibold" for="quick-income">Monthly Net Income</label>
+                    <span id="quick-income-val" class="font-headline-md text-body-lg font-bold text-primary">$9,000</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="quick-income" 
+                    class="custom-range-slider" 
+                    min="2000" 
+                    max="30000" 
+                    step="250" 
+                    value="9000" 
+                    aria-label="Monthly Net Income"
+                  />
+                  <div class="flex justify-between text-[10px] text-on-surface-variant/60 font-semibold uppercase">
+                    <span>$2,000</span>
+                    <span>$30,000</span>
+                  </div>
+                </div>
+                
+                <!-- Debts Slider -->
+                <div class="flex flex-col gap-2">
+                  <div class="flex justify-between items-center">
+                    <label class="font-label-md text-on-surface-variant font-semibold" for="quick-debts">Monthly Commitments</label>
+                    <span id="quick-debts-val" class="font-headline-md text-body-lg font-bold text-primary">$1,500</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="quick-debts" 
+                    class="custom-range-slider" 
+                    min="0" 
+                    max="10000" 
+                    step="100" 
+                    value="1500" 
+                    aria-label="Monthly Commitments"
+                  />
+                  <div class="flex justify-between text-[10px] text-on-surface-variant/60 font-semibold uppercase">
+                    <span>$0</span>
+                    <span>$10,000</span>
+                  </div>
+                </div>
+                
+                <div class="h-px bg-outline-variant/30 my-2"></div>
+                
+                <!-- Calculations Display -->
+                <div class="grid grid-cols-2 gap-4 bg-surface-ice/60 p-4 rounded-lg border border-outline-variant/20">
+                  <div class="flex flex-col">
+                    <span class="text-xs text-on-surface-variant font-semibold uppercase tracking-wider">Est. Borrowing Power</span>
+                    <span id="quick-power-result" class="font-display-lg text-[26px] md:text-[28px] font-bold text-primary mt-1">$0</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-on-surface-variant font-semibold uppercase tracking-wider">Est. Repayment</span>
+                    <span id="quick-repayment-result" class="font-display-lg text-[20px] md:text-[22px] font-bold text-secondary mt-1.5">$0</span>
+                  </div>
+                </div>
+                
+                <!-- Visual Progress Tracker -->
+                <div class="flex flex-col gap-2">
+                  <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+                    <div id="estimator-progress" class="h-full bg-primary transition-all duration-300 w-1/3"></div>
+                  </div>
+                  <p class="text-[10px] text-center text-on-surface-variant/60 font-semibold">Calculations based on simulated servicing metrics</p>
+                </div>
+                
+                <a
+                  href="pages/calculator.html"
+                  class="bg-primary text-white font-label-md text-label-md py-3.5 rounded-lg text-center shadow-md hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2 group font-semibold"
+                >
+                  Go to Detailed Calculator
+                  <span aria-hidden="true" class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
               </div>
             </div>
           </div>
@@ -369,41 +420,58 @@
     </section>
 
     <!-- Video Showcase Section -->
-    <section class="py-24 bg-surface-ice border-b border-outline-variant/30 overflow-hidden reveal-on-scroll">
+    <section class="py-24 bg-surface-ice border-b border-outline-variant/30 overflow-hidden reveal-on-scroll video-showcase-section">
       <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        
+        <!-- Tab Toggles -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-16 reveal-on-scroll">
+          <button data-tab="first-home" class="video-tab-btn bg-primary text-white border border-transparent font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm transition-all duration-300 flex items-center gap-2 hover:shadow-md focus:outline-none">
+            <span class="material-symbols-outlined text-base">home</span>
+            First Home Buyers
+          </button>
+          <button data-tab="refinance" class="video-tab-btn bg-white text-on-surface-variant border border-outline-variant/60 font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm transition-all duration-300 flex items-center gap-2 hover:bg-surface-container-low hover:shadow-md focus:outline-none">
+            <span class="material-symbols-outlined text-base">sync_alt</span>
+            Refinancing
+          </button>
+          <button data-tab="investors" class="video-tab-btn bg-white text-on-surface-variant border border-outline-variant/60 font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm transition-all duration-300 flex items-center gap-2 hover:bg-surface-container-low hover:shadow-md focus:outline-none">
+            <span class="material-symbols-outlined text-base">trending_up</span>
+            Property Investors
+          </button>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           <!-- Copy (Left Column) -->
-          <div class="lg:col-span-5 flex flex-col gap-6 reveal-on-scroll reveal-left">
+          <div class="lg:col-span-5 flex flex-col gap-6 reveal-on-scroll reveal-left fade-content">
             <span class="inline-block self-start px-4 py-1.5 rounded-full bg-white border border-outline-variant/50 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
-              See How We Work
+              Explore Lending Strategies
             </span>
-            <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight font-bold">
-              Your Journey to Home Ownership, Made Simple.
+            <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight font-bold video-dynamic-title">
+              Secure Your First Home, Sooner.
             </h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">
-              At Lend Craft Mortgage, we guide you step-by-step. From assessing borrowing power to matching with competitive lenders and final settlement, see how our team handles the complexity so you can focus on finding your dream home.
+            <p class="font-body-lg text-body-lg text-on-surface-variant video-dynamic-desc">
+              Stepping onto the property ladder doesn't have to be intimidating. We help you navigate the entire journey—from understanding deposits, mapping out state grants, to finding the absolute right lender.
             </p>
             
             <!-- Value props checklist -->
-            <ul class="flex flex-col gap-4 mt-2">
+            <ul class="flex flex-col gap-4 mt-2 video-dynamic-list">
               <li class="flex items-center gap-3 text-on-surface font-label-md">
                 <span class="material-symbols-outlined text-success-teal bg-success-teal/10 p-1 rounded-full text-base">check</span>
-                Access to 40+ of Australia's top banks and lenders
+                Explain and unlock the First Home Guarantee (FHBG) scheme
               </li>
               <li class="flex items-center gap-3 text-on-surface font-label-md">
                 <span class="material-symbols-outlined text-success-teal bg-success-teal/10 p-1 rounded-full text-base">check</span>
-                Tailored lending structures to maximize your borrowing power
+                Assess your borrowing capacity with low-deposit options
               </li>
               <li class="flex items-center gap-3 text-on-surface font-label-md">
                 <span class="material-symbols-outlined text-success-teal bg-success-teal/10 p-1 rounded-full text-base">check</span>
-                100% free expert service for home buyers and refinancers
+                Complete pre-approval in days so you can make offers confidently
               </li>
             </ul>
           </div>
           
           <!-- Video Player (Right Column) -->
-          <div class="lg:col-span-7 reveal-on-scroll reveal-right">
+          <div class="lg:col-span-7 reveal-on-scroll reveal-right fade-content">
             <div class="video-container group">
               <!-- Video Element -->
               <video class="w-full h-auto aspect-video object-cover block" preload="metadata" poster="assets/hero-image.webp">
@@ -417,7 +485,7 @@
                   <span class="material-symbols-outlined text-[36px] translate-x-[2px] select-none">play_arrow</span>
                 </div>
                 <p class="text-white mt-6 font-label-md text-label-md uppercase tracking-wider font-semibold drop-shadow-md select-none">
-                  Watch Our Introduction
+                  Watch Our Presentation
                 </p>
               </div>
             </div>
