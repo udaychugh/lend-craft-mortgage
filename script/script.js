@@ -1,15 +1,33 @@
-// Pre-load theme colors from localStorage synchronously to prevent Flash of Unthemed Content (FOUT)
+// Pre-load theme colors synchronously to prevent Flash of Unthemed Content (FOUT)
+// LOCKED to Forest Sage (type-3). To re-enable dynamic themes, restore the localStorage version below.
+// Original localStorage version:
+// (function() {
+//   try {
+//     const savedColors = localStorage.getItem("selected-theme-colors");
+//     if (savedColors) {
+//       const colors = JSON.parse(savedColors);
+//       for (const [key, value] of Object.entries(colors)) {
+//         document.documentElement.style.setProperty(`--color-${key}`, value);
+//       }
+//     }
+//   } catch (e) {
+//     console.error("Early theme loading failed:", e);
+//   }
+// })();
 (function() {
-  try {
-    const savedColors = localStorage.getItem("selected-theme-colors");
-    if (savedColors) {
-      const colors = JSON.parse(savedColors);
-      for (const [key, value] of Object.entries(colors)) {
-        document.documentElement.style.setProperty(`--color-${key}`, value);
-      }
-    }
-  } catch (e) {
-    console.error("Early theme loading failed:", e);
+  const forestSageColors = {
+    "primary": "#1f4e37",
+    "primary-rgb": "31, 78, 55",
+    "secondary": "#376a4f",
+    "tertiary": "#7a5223",
+    "surface-ice": "#f2f6f3",
+    "primary-container": "#102d1f",
+    "secondary-container": "#d6ede0",
+    "primary-fixed": "#c3edd5",
+    "secondary-fixed": "#daf2e5"
+  };
+  for (const [key, value] of Object.entries(forestSageColors)) {
+    document.documentElement.style.setProperty(`--color-${key}`, value);
   }
 })();
 
@@ -23,7 +41,7 @@ tailwind.config = {
         background: "var(--color-background, #f9f9fa)",
         "error-container": "var(--color-error-container, #ffdad6)",
         "on-error": "var(--color-on-error, #ffffff)",
-        primary: "var(--color-primary, #005460)",
+        primary: "var(--color-primary, #1f4e37)",
         "on-secondary-container": "var(--color-on-secondary-container, #3b6a71)",
         "surface-container-lowest": "var(--color-surface-container-lowest, #ffffff)",
         "surface-container-highest": "var(--color-surface-container-highest, #e2e2e3)",
@@ -31,20 +49,20 @@ tailwind.config = {
         "on-error-container": "var(--color-on-error-container, #93000a)",
         "on-secondary-fixed": "var(--color-on-secondary-fixed, #001f24)",
         error: "var(--color-error, #ba1a1a)",
-        secondary: "var(--color-secondary, #36656d)",
+        secondary: "var(--color-secondary, #376a4f)",
         "surface-container-low": "var(--color-surface-container-low, #f3f3f4)",
         "on-primary-fixed-variant": "var(--color-on-primary-fixed-variant, #004e5a)",
         "accent-sand": "var(--color-accent-sand, #F1EDE8)",
         outline: "var(--color-outline, #6f797b)",
         "on-secondary-fixed-variant": "var(--color-on-secondary-fixed-variant, #1c4d55)",
         "on-primary-fixed": "var(--color-on-primary-fixed, #001f25)",
-        "primary-fixed": "var(--color-primary-fixed, #a9edfc)",
+        "primary-fixed": "var(--color-primary-fixed, #c3edd5)",
         "on-tertiary-container": "var(--color-on-tertiary-container, #ffdbbd)",
-        "surface-ice": "var(--color-surface-ice, #F4FAFB)",
-        "secondary-container": "var(--color-secondary-container, #b8e8f1)",
+        "surface-ice": "var(--color-surface-ice, #f2f6f3)",
+        "secondary-container": "var(--color-secondary-container, #d6ede0)",
         "secondary-fixed-dim": "var(--color-secondary-fixed-dim, #9fcfd7)",
         "on-tertiary-fixed-variant": "var(--color-on-tertiary-fixed-variant, #683c0d)",
-        tertiary: "var(--color-tertiary, #6e4212)",
+        tertiary: "var(--color-tertiary, #7a5223)",
         "on-primary-container": "var(--color-on-primary-container, #a8ecfb)",
         "tertiary-fixed": "var(--color-tertiary-fixed, #ffdcc0)",
         "surface-bright": "var(--color-surface-bright, #f9f9fa)",
@@ -53,7 +71,7 @@ tailwind.config = {
         "surface-tint": "var(--color-surface-tint, #1a6774)",
         surface: "var(--color-surface, #f9f9fa)",
         "on-tertiary": "var(--color-on-tertiary, #ffffff)",
-        "secondary-fixed": "var(--color-secondary-fixed, #bbebf4)",
+        "secondary-fixed": "var(--color-secondary-fixed, #daf2e5)",
         "tertiary-container": "var(--color-tertiary-container, #8a5928)",
         "tertiary-fixed-dim": "var(--color-tertiary-fixed-dim, #f9ba80)",
         "on-primary": "var(--color-on-primary, #ffffff)",
@@ -67,7 +85,7 @@ tailwind.config = {
         "on-secondary": "var(--color-on-secondary, #ffffff)",
         "inverse-surface": "var(--color-inverse-surface, #2f3132)",
         "on-tertiary-fixed": "var(--color-on-tertiary-fixed, #2d1600)",
-        "primary-container": "var(--color-primary-container, #226d7a)",
+        "primary-container": "var(--color-primary-container, #102d1f)",
       },
       borderRadius: {
         DEFAULT: "0.125rem",
@@ -182,7 +200,10 @@ function initializeApp() {
 
   // Retrieve themes from loaded config
   const themes = window.THEME_CONFIG ? window.THEME_CONFIG.themes : [];
-  const savedThemeId = localStorage.getItem("selected-theme-id") || "type-1";
+  // LOCKED THEME: "type-3" (Forest Sage) is the client-chosen default.
+  // To re-enable user theme selection, change "type-3" back to the localStorage lookup.
+  // Original: const savedThemeId = localStorage.getItem("selected-theme-id") || "type-1";
+  const savedThemeId = "type-3";
   let activeTheme = themes.find(t => t.id === savedThemeId);
   if (!activeTheme && themes.length > 0) {
     activeTheme = themes[0];
@@ -199,7 +220,10 @@ function initializeApp() {
   const navbarPlaceholder = document.getElementById("navbar-placeholder");
   if (navbarPlaceholder) {
     let topBarHtml = "";
-    if (!isSubPage && activeTheme && themes.length > 0) {
+    // THEME SELECTOR BAR HIDDEN: Client requested hiding the selector.
+    // To re-enable, change `false &&` back to the original condition below.
+    // Original: if (!isSubPage && activeTheme && themes.length > 0) {
+    if (false && !isSubPage && activeTheme && themes.length > 0) {
       topBarHtml = `
       <div id="theme-selector-bar" class="bg-[#1a1c1d] text-white/90 text-[11px] py-2 border-b border-white/5 relative z-[60]">
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-8">
@@ -270,7 +294,10 @@ function initializeApp() {
   }
 
   // Setup dropdown event listeners if on home page
-  if (!isSubPage && activeTheme && themes.length > 0) {
+  // THEME DROPDOWN LISTENERS DISABLED: No selector bar means no listeners needed.
+  // To re-enable, change `false &&` back to the original condition below.
+  // Original: if (!isSubPage && activeTheme && themes.length > 0) {
+  if (false && !isSubPage && activeTheme && themes.length > 0) {
     const dropdownBtn = document.getElementById("theme-dropdown-btn");
     const dropdownMenu = document.getElementById("theme-dropdown-menu");
     const dropdownContainer = document.getElementById("theme-dropdown-container");
