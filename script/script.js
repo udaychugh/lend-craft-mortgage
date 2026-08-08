@@ -15,18 +15,28 @@
 //   }
 // })();
 (function() {
-  const forestSageColors = {
-    "primary": "#1f4e37",
-    "primary-rgb": "31, 78, 55",
-    "secondary": "#376a4f",
-    "tertiary": "#7a5223",
-    "surface-ice": "#f2f6f3",
-    "primary-container": "#102d1f",
-    "secondary-container": "#d6ede0",
-    "primary-fixed": "#c3edd5",
-    "secondary-fixed": "#daf2e5"
+  const customNewColors = {
+    "primary": "#0D1B2A",          // Deep Navy
+    "primary-rgb": "13, 27, 42",
+    "luxury-gold": "#C8A14A",      // Luxury Gold
+    "secondary": "#2D3748",        // Charcoal
+    "secondary-rgb": "45, 55, 72",
+    "slate": "#64748B",            // Slate
+    "tertiary": "#64748B",
+    "background": "#FAFAF8",       // Off White
+    "surface": "#FAFAF8",
+    "surface-ice": "#F5F5F5",      // Light Grey
+    "on-background": "#0D1B2A",
+    "on-surface": "#0D1B2A",
+    "on-surface-variant": "#2D3748",
+    "outline-variant": "#CBD5E1",
+    "primary-container": "#0D1B2A",
+    "secondary-container": "#F5F5F5",
+    "primary-fixed": "#C8A14A",
+    "secondary-fixed": "#E2E8F0",
+    "accent-green": "#22C55E"      // Accent Green
   };
-  for (const [key, value] of Object.entries(forestSageColors)) {
+  for (const [key, value] of Object.entries(customNewColors)) {
     document.documentElement.style.setProperty(`--color-${key}`, value);
   }
 })();
@@ -41,15 +51,14 @@ tailwind.config = {
         background: "var(--color-background, #f9f9fa)",
         "error-container": "var(--color-error-container, #ffdad6)",
         "on-error": "var(--color-on-error, #ffffff)",
-        primary: "var(--color-primary, #1f4e37)",
-        "on-secondary-container": "var(--color-on-secondary-container, #3b6a71)",
-        "surface-container-lowest": "var(--color-surface-container-lowest, #ffffff)",
-        "surface-container-highest": "var(--color-surface-container-highest, #e2e2e3)",
-        "on-surface-variant": "var(--color-on-surface-variant, #3f484a)",
-        "on-error-container": "var(--color-on-error-container, #93000a)",
-        "on-secondary-fixed": "var(--color-on-secondary-fixed, #001f24)",
-        error: "var(--color-error, #ba1a1a)",
-        secondary: "var(--color-secondary, #376a4f)",
+        "luxury-gold": "var(--color-luxury-gold, #C8A14A)",
+        "accent-green": "var(--color-accent-green, #22C55E)",
+        slate: "var(--color-slate, #64748B)",
+        "deep-navy": "var(--color-primary, #0D1B2A)",
+        charcoal: "var(--color-secondary, #2D3748)",
+        "off-white": "var(--color-background, #FAFAF8)",
+        "light-grey": "var(--color-surface-ice, #F5F5F5)",
+        primary: "var(--color-primary, #0D1B2A)",
         "surface-container-low": "var(--color-surface-container-low, #f3f3f4)",
         "on-primary-fixed-variant": "var(--color-on-primary-fixed-variant, #004e5a)",
         "accent-sand": "var(--color-accent-sand, #F1EDE8)",
@@ -389,8 +398,20 @@ function initializeApp() {
           </div>
         </div>
       </div>
-      <div class="border-t border-outline-variant/50 py-6 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8">
+      <div class="border-t border-outline-variant/50 pt-8 pb-6 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="font-label-sm text-label-sm text-on-surface-variant text-center md:text-left">© ${new Date().getFullYear()} Lend Craft Mortgage. Australian Credit Licence holder. Regulatory disclosures apply. This website uses cookies to analyze traffic and optimize experience.</p>
+        <div class="flex items-center gap-4 text-on-surface-variant text-sm font-medium">
+          <span class="text-xs uppercase tracking-wider font-bold text-primary">Follow Us:</span>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">photo_camera</span> Instagram
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="font-heading font-bold text-xs">X</span> Twitter
+          </a>
+          <a href="https://pinterest.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">push_pin</span> Pinterest
+          </a>
+        </div>
       </div>
     </footer>`;
   }
@@ -891,6 +912,59 @@ function initializeApp() {
     });
     
     calculatePower();
+  }
+
+  // Application Modal Logic
+  window.openApplicationModal = function(defaultType = 'Home Loan') {
+    const modal = document.getElementById('application-modal');
+    if (!modal) return;
+    const loanTypeSelect = document.getElementById('app-loan-type');
+    if (loanTypeSelect && defaultType) {
+      for (let option of loanTypeSelect.options) {
+        if (option.value.toLowerCase().includes(defaultType.toLowerCase()) || option.text.toLowerCase().includes(defaultType.toLowerCase())) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeApplicationModal = function() {
+    const modal = document.getElementById('application-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+
+  const appModal = document.getElementById('application-modal');
+  if (appModal) {
+    appModal.addEventListener('click', function(e) {
+      if (e.target === appModal) {
+        window.closeApplicationModal();
+      }
+    });
+  }
+
+  const appForm = document.getElementById('mortgage-application-form');
+  if (appForm) {
+    appForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const successMessage = document.getElementById('app-success-message');
+      if (successMessage) {
+        appForm.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        setTimeout(() => {
+          window.closeApplicationModal();
+          appForm.reset();
+          appForm.classList.remove('hidden');
+          successMessage.classList.add('hidden');
+        }, 3000);
+      }
+    });
   }
 
   // Ensure theme properties (including logo overlay masks) are fully set on load

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Start Online Mortgage Application | Lend Craft Mortgage</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="../script/script.js"></script>
+  <link href="../style/style.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+
+  <!-- Top Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow w-full">
+    <!-- Hero Header -->
+    <header class="relative pt-24 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden bg-surface-ice border-b border-outline-variant/30">
+      <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-secondary-container rounded-full blur-3xl opacity-40 -z-10 pointer-events-none"></div>
+      <div class="max-w-container-max mx-auto text-center space-y-6">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-outline-variant/50 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+          Fast Digital Mortgage Assessment
+        </span>
+        <h1 class="font-display-lg text-display-lg text-primary max-w-4xl mx-auto tracking-tight">
+          Start Your Online Application
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+          Complete our secure, 4-step online mortgage portal in under 5 minutes. No impact on your credit score.
+        </p>
+      </div>
+    </header>
+
+    <!-- Multi-Step Application Portal Section -->
+    <section class="py-16 px-margin-mobile md:px-margin-desktop">
+      <div class="max-w-4xl mx-auto bg-surface-container-lowest border border-outline-variant/50 rounded-2xl p-6 md:p-12 shadow-sm">
+        
+        <!-- Step Progress Indicator -->
+        <div class="mb-10">
+          <div class="flex justify-between items-center mb-4">
+            <span id="step-indicator-text" class="text-xs font-bold uppercase tracking-wider text-primary">Step 1 of 4: Loan Goal</span>
+            <span id="step-percentage" class="text-xs font-bold text-secondary">25% Complete</span>
+          </div>
+          <div class="w-full bg-surface-ice h-2.5 rounded-full overflow-hidden border border-outline-variant/30">
+            <div id="progress-bar-fill" class="bg-primary h-full transition-all duration-500 ease-out" style="width: 25%;"></div>
+          </div>
+        </div>
+
+        <!-- Application Form -->
+        <form id="online-application-portal" onsubmit="handlePortalSubmit(event)">
+          
+          <!-- STEP 1: Loan Purpose & Target -->
+          <div id="step-1" class="space-y-6">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">What is your primary lending goal?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="border-2 border-outline-variant/40 rounded-xl p-5 cursor-pointer hover:border-primary transition-all flex items-start gap-4 bg-white hover:shadow-sm">
+                <input type="radio" name="goal" value="First Home Buyer" checked class="mt-1 text-primary focus:ring-primary">
+                <div>
+                  <h3 class="font-bold text-primary">First Home Purchase</h3>
+                  <p class="text-xs text-on-surface-variant mt-1">First home buyer grants, low deposit options & stamp duty concessions.</p>
+                </div>
+              </label>
+
+              <label class="border-2 border-outline-variant/40 rounded-xl p-5 cursor-pointer hover:border-primary transition-all flex items-start gap-4 bg-white hover:shadow-sm">
+                <input type="radio" name="goal" value="Next Home Buyer" class="mt-1 text-primary focus:ring-primary">
+                <div>
+                  <h3 class="font-bold text-primary">Upgrading / Next Property</h3>
+                  <p class="text-xs text-on-surface-variant mt-1">Bridging finance, selling existing home & porting mortgage structure.</p>
+                </div>
+              </label>
+
+              <label class="border-2 border-outline-variant/40 rounded-xl p-5 cursor-pointer hover:border-primary transition-all flex items-start gap-4 bg-white hover:shadow-sm">
+                <input type="radio" name="goal" value="Refinance" class="mt-1 text-primary focus:ring-primary">
+                <div>
+                  <h3 class="font-bold text-primary">Refinance & Rate Cut</h3>
+                  <p class="text-xs text-on-surface-variant mt-1">Lower interest rates, consolidate debt & unlock cash equity.</p>
+                </div>
+              </label>
+
+              <label class="border-2 border-outline-variant/40 rounded-xl p-5 cursor-pointer hover:border-primary transition-all flex items-start gap-4 bg-white hover:shadow-sm">
+                <input type="radio" name="goal" value="Property Investor" class="mt-1 text-primary focus:ring-primary">
+                <div>
+                  <h3 class="font-bold text-primary">Investment Property</h3>
+                  <p class="text-xs text-on-surface-variant mt-1">Tax-effective structures, interest-only options & yield optimization.</p>
+                </div>
+              </label>
+            </div>
+
+            <div class="pt-4 flex justify-end">
+              <button type="button" onclick="goToStep(2)" class="bg-primary text-white font-bold px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors flex items-center gap-2">
+                Next: Property & Budget
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Budget & Property Estimates -->
+          <div id="step-2" class="space-y-6 hidden">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">Property & Financial Estimates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Estimated Property Value</label>
+                <input type="text" placeholder="e.g. $850,000" required class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Desired Loan Amount</label>
+                <input type="text" placeholder="e.g. $650,000" required class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Target Property Location / Suburb</label>
+                <input type="text" placeholder="e.g. Parramatta, NSW" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Available Deposit / Equity</label>
+                <input type="text" placeholder="e.g. $200,000" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+            </div>
+
+            <div class="pt-4 flex justify-between">
+              <button type="button" onclick="goToStep(1)" class="bg-surface-ice border border-outline-variant/40 text-primary font-bold px-6 py-3.5 rounded-lg hover:bg-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Previous Step
+              </button>
+              <button type="button" onclick="goToStep(3)" class="bg-primary text-white font-bold px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors flex items-center gap-2">
+                Next: Income Details
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Income & Employment -->
+          <div id="step-3" class="space-y-6 hidden">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">Employment & Income Profile</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Employment Type</label>
+                <select class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary">
+                  <option value="PAYG Full-Time">PAYG Full-Time</option>
+                  <option value="PAYG Part-Time / Casual">PAYG Part-Time / Casual</option>
+                  <option value="Self-Employed / Business Owner">Self-Employed / Business Owner</option>
+                  <option value="Contractor / Freelancer">Contractor / Freelancer</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Gross Annual Household Income</label>
+                <input type="text" placeholder="e.g. $140,000 AUD" required class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Existing Monthly Liabilities / Credit Card Limits</label>
+                <input type="text" placeholder="e.g. $1,200/mo personal loan, $10,000 credit limit" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+            </div>
+
+            <div class="pt-4 flex justify-between">
+              <button type="button" onclick="goToStep(2)" class="bg-surface-ice border border-outline-variant/40 text-primary font-bold px-6 py-3.5 rounded-lg hover:bg-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Previous Step
+              </button>
+              <button type="button" onclick="goToStep(4)" class="bg-primary text-white font-bold px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors flex items-center gap-2">
+                Next: Contact Details
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Applicant Details & Submission -->
+          <div id="step-4" class="space-y-6 hidden">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">Applicant Details & Submission</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">First Name *</label>
+                <input type="text" required placeholder="e.g. Alex" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Last Name *</label>
+                <input type="text" required placeholder="e.g. Morgan" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Email Address *</label>
+                <input type="email" required placeholder="alex.morgan@example.com.au" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-primary uppercase tracking-wider mb-2">Mobile Phone *</label>
+                <input type="tel" required placeholder="0400 000 000" class="w-full px-4 py-3 rounded-lg border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary text-primary" />
+              </div>
+            </div>
+
+            <div class="pt-4 flex justify-between">
+              <button type="button" onclick="goToStep(3)" class="bg-surface-ice border border-outline-variant/40 text-primary font-bold px-6 py-3.5 rounded-lg hover:bg-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Previous Step
+              </button>
+              <button type="submit" class="bg-primary text-white font-bold px-10 py-3.5 rounded-lg hover:bg-primary-container transition-colors flex items-center gap-2 shadow-md">
+                <span class="material-symbols-outlined">send</span>
+                Submit Assessment Application
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Completion Confirmation Banner -->
+        <div id="portal-success-state" class="hidden text-center py-12 space-y-6">
+          <div class="w-20 h-20 bg-accent-green/10 text-accent-green rounded-full flex items-center justify-center mx-auto">
+            <span class="material-symbols-outlined text-5xl">task_alt</span>
+          </div>
+          <h2 class="font-headline-lg text-headline-lg text-primary font-bold">Online Application Submitted!</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
+            Your assessment file has been safely routed to our senior credit risk team. A broker assigned to your state hub will reach out via phone within 2 business hours with preliminary lending scenarios.
+          </p>
+          <div class="pt-4">
+            <a href="../index.html" class="inline-block bg-primary text-white font-bold px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors">
+              Return to Homepage
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Step Wizard Script -->
+  <script>
+    const stepTitles = {
+      1: "Step 1 of 4: Loan Goal",
+      2: "Step 2 of 4: Property & Budget",
+      3: "Step 3 of 4: Employment & Income",
+      4: "Step 4 of 4: Contact Details"
+    };
+
+    const stepPcts = {
+      1: "25%",
+      2: "50%",
+      3: "75%",
+      4: "100%"
+    };
+
+    function goToStep(stepNum) {
+      for (let i = 1; i <= 4; i++) {
+        const stepEl = document.getElementById(`step-${i}`);
+        if (stepEl) {
+          stepEl.classList.add('hidden');
+        }
+      }
+      const targetStep = document.getElementById(`step-${stepNum}`);
+      if (targetStep) {
+        targetStep.classList.remove('hidden');
+      }
+
+      document.getElementById('step-indicator-text').textContent = stepTitles[stepNum];
+      document.getElementById('step-percentage').textContent = `${stepPcts[stepNum]} Complete`;
+      document.getElementById('progress-bar-fill').style.width = stepPcts[stepNum];
+      window.scrollTo({ top: 200, behavior: 'smooth' });
+    }
+
+    function handlePortalSubmit(e) {
+      e.preventDefault();
+      document.getElementById('online-application-portal').classList.add('hidden');
+      document.getElementById('portal-success-state').classList.remove('hidden');
+      window.scrollTo({ top: 200, behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+</body>
+</html>

@@ -4,24 +4,28 @@
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --color-primary: #005460;
-  --color-primary-rgb: 0, 84, 96;
-  --color-secondary: #36656d;
-  --color-tertiary: #6e4212;
-  --color-background: #f9f9fa;
-  --color-surface: #f9f9fa;
-  --color-on-background: #1a1c1d;
-  --color-on-surface: #1a1c1d;
-  --color-on-surface-variant: #3f484a;
-  --color-outline-variant: #bfc8cb;
-  --color-surface-ice: #F4FAFB;
-  --color-surface-variant: #e2e2e3;
-  --color-primary-container: #226d7a;
-  --color-secondary-container: #b8e8f1;
-  --color-tertiary-container: #8a5928;
-  --color-primary-fixed: #a9edfc;
-  --color-secondary-fixed: #bbebf4;
-  --color-tertiary-fixed: #ffdcc0;
+  /* Custom New Palette Definition */
+  --color-primary: #0D1B2A;          /* Deep Navy */
+  --color-primary-rgb: 13, 27, 42;
+  --color-luxury-gold: #C8A14A;      /* Luxury Gold */
+  --color-secondary: #2D3748;        /* Charcoal */
+  --color-secondary-rgb: 45, 55, 72;
+  --color-slate: #64748B;            /* Slate */
+  --color-tertiary: #64748B;
+  --color-background: #FAFAF8;       /* Off White */
+  --color-surface: #FAFAF8;          /* Off White */
+  --color-surface-ice: #F5F5F5;      /* Light Grey */
+  --color-on-background: #0D1B2A;     /* Deep Navy text */
+  --color-on-surface: #0D1B2A;
+  --color-on-surface-variant: #2D3748; /* Charcoal text */
+  --color-outline-variant: #CBD5E1;   /* Slate light */
+  --color-surface-variant: #F5F5F5;
+  --color-primary-container: #0D1B2A;
+  --color-secondary-container: #F5F5F5;
+  --color-tertiary-container: #C8A14A;
+  --color-primary-fixed: #C8A14A;
+  --color-secondary-fixed: #E2E8F0;
+  --color-accent-green: #22C55E;      /* Accent Green */
 }
 
 body {
