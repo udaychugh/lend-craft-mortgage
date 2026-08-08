@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lendcraftmortgage.com.au/sitemap.xml
+
+# AI Search & LLM Discovery Files
+Allow: /llms.txt
+Allow: /.well-known/ai-plugin.json
