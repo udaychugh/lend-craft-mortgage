@@ -272,7 +272,7 @@ function initializeApp() {
     </svg>`;
 
     navbarPlaceholder.outerHTML = svgFilterHtml + topBarHtml + `
-    <nav class="bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 docked full-width top-0 sticky border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none z-50">
+    <nav id="main-navbar" class="navbar-hidden bg-surface/90 backdrop-blur-md dark:bg-surface-dim/90 fixed top-0 left-0 right-0 border-b border-outline-variant dark:border-outline shadow-md z-50 transition-all duration-500 transform">
       <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
         <!-- Brand -->
         <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2" href="${pathPrefix}index.html">
@@ -301,6 +301,22 @@ function initializeApp() {
         </button>
       </div>
     </nav>`;
+
+    // Scroll listener for revealing navbar on scroll down
+    const mainNav = document.getElementById("main-navbar");
+    if (mainNav) {
+      const handleScroll = () => {
+        if (window.scrollY > 80) {
+          mainNav.classList.remove("navbar-hidden");
+          mainNav.classList.add("navbar-visible");
+        } else {
+          mainNav.classList.remove("navbar-visible");
+          mainNav.classList.add("navbar-hidden");
+        }
+      };
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll(); // Initial check
+    }
   }
 
   // Setup dropdown event listeners if on home page

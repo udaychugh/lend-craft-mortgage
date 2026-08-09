@@ -92,6 +92,17 @@ button:hover .material-symbols-outlined,
   );
 }
 
+.text-gradient-light {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    #34D399, /* Emerald 400 */
+    #6EE7B7  /* Teal 300 */
+  );
+}
+
 /* Shadows and animations */
 .ambient-shadow {
   box-shadow: 0 10px 20px -4px rgba(var(--color-primary-rgb), 0.04);
@@ -397,6 +408,18 @@ img[alt="Lend Craft Mortgage Logo"] {
   background: var(--color-primary-container);
 }
 
+/* Navbar scroll-reveal transition */
+.navbar-hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.navbar-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 /* Hero Mouse Cursor Parallax Transitions */
 .parallax-bg-slow {
   transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
@@ -409,8 +432,6 @@ img[alt="Lend Craft Mortgage Logo"] {
 .parallax-layer {
   transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
-}
-
 
 
 
