@@ -280,6 +280,7 @@ function initializeApp() {
         </a>
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
+          <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/news.html">News</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/blog.html">Blog</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/calculator.html">Calculator</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/about.html">About Us</a>

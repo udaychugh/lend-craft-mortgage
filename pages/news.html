@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Live Australian Property & Mortgage News | Lend Craft Mortgage</title>
+  <meta name="description" content="Live updates on Australian property market trends, mortgage rates, RBA interest rate news, and real estate insights powered by real-time news feeds." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <script src="../script/script.js"></script>
+  <link href="../style/style.css" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+  <!-- Top Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+    <!-- Hero Header -->
+    <header class="text-center max-w-3xl mx-auto mb-12 space-y-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-ice border border-outline-variant/30 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live News Feed
+      </div>
+      <h1 class="font-display-lg text-display-lg text-primary tracking-tight">Australian Property & Mortgage News</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">
+        Real-time market intelligence on Australian real estate, RBA interest rates, home loan trends, and property regulation updates.
+      </p>
+    </header>
+
+    <!-- Topic / Search Filters -->
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-10" id="topic-filters">
+      <button class="topic-btn px-5 py-2 rounded-full border border-primary bg-primary text-white font-label-md text-label-md transition-all shadow-sm cursor-pointer" data-query="Australia property OR mortgage OR RBA rate">All News</button>
+      <button class="topic-btn px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-query="Australia RBA interest rate mortgage">RBA & Interest Rates</button>
+      <button class="topic-btn px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-query="Australia house prices property market Sydney Melbourne Brisbane">House Prices & Market</button>
+      <button class="topic-btn px-5 py-2 rounded-full border border-outline-variant hover:border-primary hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-all cursor-pointer" data-query="Australia first home buyer stamp duty grant">First Home Buyers</button>
+    </div>
+
+    <!-- News Grid Container (Uniform 3 per row grid) -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="news-grid-container">
+      <!-- Skeleton Loading Cards -->
+      <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-6 h-96 animate-pulse space-y-4">
+        <div class="h-48 bg-outline-variant/20 rounded-lg"></div>
+        <div class="h-4 bg-outline-variant/20 rounded w-1/3"></div>
+        <div class="h-6 bg-outline-variant/20 rounded w-5/6"></div>
+      </div>
+      <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-6 h-96 animate-pulse space-y-4">
+        <div class="h-48 bg-outline-variant/20 rounded-lg"></div>
+        <div class="h-4 bg-outline-variant/20 rounded w-1/3"></div>
+        <div class="h-6 bg-outline-variant/20 rounded w-5/6"></div>
+      </div>
+      <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-6 h-96 animate-pulse space-y-4">
+        <div class="h-48 bg-outline-variant/20 rounded-lg"></div>
+        <div class="h-4 bg-outline-variant/20 rounded w-1/3"></div>
+        <div class="h-6 bg-outline-variant/20 rounded w-5/6"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dynamic Live Public API News Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const gridContainer = document.getElementById("news-grid-container");
+      const topicBtns = document.querySelectorAll(".topic-btn");
+
+      // Curated image fallbacks for news cards without images
+      const fallbackImages = [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCx-4RQ5Dh7vkvskFzPas4toLYBrK2rq288S7EgKxZQmu3j21a1pgyIrRo5URvqAT9P6Ri-IaPLe8FZeiytPsP96X2Tgqd8KVv03jsh07ig1feI08Fz7tJR31ClN5hTglZJ9uJTtHmUKFI9-tKpngrkIRWGk1ylldXGW7kCCoKchEJHlxWP3dTSQxdzzZ15cAOL5r33-27Nl8TW3oV71Q1Ji8y-2-oN6SH9UXIwQibKXodDtTxvRDTWjb0qLRopjc0ngRtZfOWm9g",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCMyJBN1Ppt4SnIJaF5fLl_S9KCAVupNwKwnt5IqVBrfKAMMmp-xEr11j4U1T5daPfAvn1vkYBOS7JUh-UgOJzkRJaduyLNQRHSFOVfQKW26SLd_q8pilFCKEvjPlyK-_9L6yMyYhVaCCQUvUVbGyXQ2ZJ9LNY6zdOM2cMUC1WxNlsm8LhSxzyLw2uBgGyYDLwJ0UpDxyRVFNwYDkNy7hjhC8XJyG8Nmog4DmDFnXzSz-GLzmCTl8QUIYrhYRKErjFgbNi4yPO7bA",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuA8ZiSpJ7QYJuzFFARwya4TgKUsmPZXPcmXB7JtUiY21KTzeETVQtUb1mjIQCuNkgEmYFuf_k2jrG_Eu4f5IROpofCgARGHMa2Nnb_v4ddACzhWGFvLEaEmhdszJWg60lY3X_hxVKLeFAF7P5e8N8sJc6C9JWkYKM6GNmkBr4D9KY9WwxHklVe-SJoTmcMyigvB91TE6pFwjQ9q3eBOaL9tuquU91jfjpIlDMqiP7bhBc3XGp33r0IcmSEayu10Il8b5HAPSZmLIg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuDo8fwJK0o4gU5MRc1KvQxBjGteOTdvRxWCntSZRtimBiFRbVp30p7wCf6zjMfIZVsTx1N3YLiCaeEaQvuFtrgwSzdAKKzpyO3zt-C6QalVCMi-_-ALms0-pbkD2cxxJc62JSHmhc8iAY2qzOYGAheDm4pvvr4uojAR1NTRPTzspmguKt_e5wT_STz-Gqn2_NxgU5usIfAjdcItEoin2Ihn9OQ461YgvFgVT5SKuy0o9d0Y3d84NhBxc3caXnBL59eTRtcXHnC6GA"
+      ];
+
+      function formatDate(dateStr) {
+        if (!dateStr) return "Recently";
+        try {
+          const date = new Date(dateStr);
+          if (isNaN(date.getTime())) return dateStr;
+          return date.toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" });
+        } catch (e) {
+          return dateStr;
+        }
+      }
+
+      async function fetchPublicNews(searchQuery) {
+        // Show uniform 3-per-row skeleton loading state
+        gridContainer.innerHTML = Array(6).fill(`
+          <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-6 h-96 animate-pulse space-y-4">
+            <div class="h-48 bg-outline-variant/20 rounded-lg"></div>
+            <div class="h-4 bg-outline-variant/20 rounded w-1/3"></div>
+            <div class="h-6 bg-outline-variant/20 rounded w-5/6"></div>
+          </div>`).join("");
+
+        let articles = [];
+
+        try {
+          // Public RSS-to-JSON API fetch (no API key required)
+          const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(searchQuery)}&hl=en-AU&gl=AU&ceid=AU:en`;
+          const apiEndpoint = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+          
+          const response = await fetch(apiEndpoint);
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data.items && data.items.length > 0) {
+              articles = data.items.map((item, index) => {
+                const tmp = document.createElement("DIV");
+                tmp.innerHTML = item.description || item.content || "";
+                let textDesc = tmp.textContent || tmp.innerText || "";
+                if (textDesc.length > 140) textDesc = textDesc.substring(0, 140) + "...";
+
+                return {
+                  title: item.title ? item.title.split(" - ")[0] : "Australian Property Update",
+                  description: textDesc || "Latest Australian property and home loan update.",
+                  link: item.link || "#",
+                  source: item.author || (item.title && item.title.includes("-") ? item.title.split("-").pop().trim() : "Australian News"),
+                  pubDate: formatDate(item.pubDate),
+                  image: fallbackImages[index % fallbackImages.length]
+                };
+              });
+            }
+          }
+        } catch (err) {
+          console.warn("Public RSS API error:", err);
+        }
+
+        renderNews(articles);
+      }
+
+      function renderNews(articles) {
+        if (!articles || articles.length === 0) {
+          // If no news returned from API, strictly show "No news are available" empty state (NO fallback static news)
+          gridContainer.className = "w-full py-16 text-center";
+          gridContainer.innerHTML = `
+            <div class="max-w-md mx-auto space-y-4">
+              <span class="material-symbols-outlined text-5xl text-on-surface-variant/40">newspaper_off</span>
+              <h3 class="font-headline-md text-xl font-bold text-primary">No news are available</h3>
+              <p class="text-on-surface-variant text-sm">
+                There are currently no live news articles available for this topic. Please try selecting a different topic or check back later.
+              </p>
+            </div>
+          `;
+          return;
+        }
+
+        // Restore 3-column grid layout
+        gridContainer.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter";
+
+        // Render uniform 3-per-row news cards
+        gridContainer.innerHTML = articles.map(item => `
+          <article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full">
+            <div class="h-48 overflow-hidden relative shrink-0">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${item.image}" alt="${item.title}" />
+              <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-label-sm text-primary font-bold shadow-sm">${item.source}</span>
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 text-xs text-on-surface-variant">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> ${item.pubDate}</span>
+                </div>
+                <h3 class="font-headline-md text-body-lg font-bold text-primary leading-snug group-hover:text-secondary transition-colors line-clamp-2">
+                  <a href="${item.link}" target="_blank" rel="noopener">${item.title}</a>
+                </h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3">
+                  ${item.description}
+                </p>
+              </div>
+              <div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between mt-auto">
+                <a href="${item.link}" target="_blank" rel="noopener" class="text-xs font-semibold text-primary hover:text-secondary inline-flex items-center gap-1">
+                  Read Source <span class="material-symbols-outlined text-xs">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      // Topic Filter Event Listeners
+      topicBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          topicBtns.forEach(b => {
+            b.classList.remove("bg-primary", "text-white", "border-primary");
+            b.classList.add("border-outline-variant", "text-on-surface-variant");
+          });
+          btn.classList.add("bg-primary", "text-white", "border-primary");
+          btn.classList.remove("border-outline-variant", "text-on-surface-variant");
+
+          const query = btn.getAttribute("data-query");
+          fetchPublicNews(query);
+        });
+      });
+
+      // Initial Fetch on Load
+      fetchPublicNews("Australia property OR mortgage OR RBA rate");
+    });
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+</body>
+</html>
