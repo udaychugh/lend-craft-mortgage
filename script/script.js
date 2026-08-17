@@ -416,17 +416,20 @@ function initializeApp() {
         </div>
       </div>
       <div class="border-t border-outline-variant/50 pt-8 pb-6 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-label-sm text-label-sm text-on-surface-variant text-center md:text-left">© ${new Date().getFullYear()} Lend Craft Mortgage. Australian Credit Licence holder. Regulatory disclosures apply. This website uses cookies to analyze traffic and optimize experience.</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant text-center md:text-left">© ${new Date().getFullYear()} Lend Craft Mortgage. Australian Credit Licence 389087. Regulatory disclosures apply. This website uses cookies to analyze traffic and optimize experience.</p>
         <div class="flex items-center gap-4 text-on-surface-variant text-sm font-medium">
           <span class="text-xs uppercase tracking-wider font-bold text-primary">Follow Us:</span>
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+          <a href="https://www.facebook.com/share/1M81wqqLXA/" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="font-heading font-bold text-base">f</span> Facebook
+          </a>
+          <a href="https://www.instagram.com/sanjeev2189sharma?utm_source=qr&igsh=MXMwY2ExdTg1bDI4bQ==" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-base">photo_camera</span> Instagram
           </a>
-          <a href="https://x.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
-            <span class="font-heading font-bold text-xs">X</span> Twitter
+          <a href="https://www.tiktok.com/@ksanjeevsharma1978?_r=1&_t=ZS-98kaUq8mZAG" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">music_note</span> TikTok
           </a>
-          <a href="https://pinterest.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
-            <span class="material-symbols-outlined text-base">push_pin</span> Pinterest
+          <a href="https://www.linkedin.com/in/sanjeev-sharma-88070123b" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="font-heading font-bold text-base">in</span> LinkedIn
           </a>
         </div>
       </div>
