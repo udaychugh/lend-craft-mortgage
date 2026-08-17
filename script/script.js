@@ -272,7 +272,7 @@ function initializeApp() {
     </svg>`;
 
     navbarPlaceholder.outerHTML = svgFilterHtml + topBarHtml + `
-    <nav id="main-navbar" class="navbar-hidden bg-surface/90 backdrop-blur-md dark:bg-surface-dim/90 fixed top-0 left-0 right-0 border-b border-outline-variant dark:border-outline shadow-md z-50 transition-all duration-500 transform">
+    <nav id="main-navbar" class="${isSubPage ? 'navbar-visible' : 'navbar-hidden'} bg-surface/90 backdrop-blur-md dark:bg-surface-dim/90 fixed top-0 left-0 right-0 border-b border-outline-variant dark:border-outline shadow-md z-50 transition-all duration-500 transform">
       <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
         <!-- Brand -->
         <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2" href="${pathPrefix}index.html">
@@ -280,6 +280,7 @@ function initializeApp() {
         </a>
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
+          <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/lenders.html">Lenders</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/news.html">News</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/blog.html">Blog</a>
           <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 py-2" href="${pathPrefix}pages/calculator.html">Calculator</a>
@@ -302,9 +303,9 @@ function initializeApp() {
       </div>
     </nav>`;
 
-    // Scroll listener for revealing navbar on scroll down
+    // Scroll listener for revealing navbar on scroll down (Index page only)
     const mainNav = document.getElementById("main-navbar");
-    if (mainNav) {
+    if (mainNav && !isSubPage) {
       const handleScroll = () => {
         if (window.scrollY > 80) {
           mainNav.classList.remove("navbar-hidden");
@@ -391,6 +392,7 @@ function initializeApp() {
         <!-- Links -->
         <div class="col-span-1 flex flex-col gap-4 mt-8 md:mt-0">
           <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-2">Services</h4>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/lenders.html">Our 65+ Lenders</a>
           <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/home_loans.html">Home Loans</a>
           <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/first_home_buyers.html">First Home Buyers</a>
           <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="${pathPrefix}pages/investment_loans.html">Investment Loans</a>
@@ -634,7 +636,7 @@ function initializeApp() {
       },
       "refinance": {
         title: "Lower Your Rates & Consolidate Debt.",
-        desc: "Don't let loyalty cost you. We negotiate directly with over 40+ lenders to secure competitive loan rates, lower monthly fees, or extract equity for home renovations and investment projects.",
+        desc: "Don't let loyalty cost you. We negotiate directly with over 65+ lenders to secure competitive loan rates, lower monthly fees, or extract equity for home renovations and investment projects.",
         list: [
           "Perform a free mortgage health check on your current interest rate",
           "Access hidden cashback deals and special interest-only structures",

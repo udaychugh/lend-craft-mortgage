@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Our 65+ Lender Panel & Products | Lend Craft Mortgage</title>
+  <meta name="description" content="Explore Lend Craft Mortgage's extensive panel of 65+ Australian banks, credit unions, non-bank specialists, and lending partners to find the ideal loan structure for your goals."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="../script/script.js"></script>
+  <link href="../style/style.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+
+  <!-- Top Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow w-full">
+    <!-- Hero Section -->
+    <header class="relative pt-24 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden bg-surface-ice border-b border-outline-variant/30">
+      <!-- Decorative Background Elements -->
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-fixed rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-primary-container rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+      
+      <div class="max-w-container-max mx-auto text-center space-y-6 relative z-10">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-outline-variant/50 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+          Accredited AFG Broker Network
+        </span>
+        
+        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary max-w-4xl mx-auto tracking-tight font-bold">
+          Compare <span class="text-luxury-gold">65+ Leading Lenders</span> &amp; Finance Products
+        </h1>
+        
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
+          As an accredited mortgage advisory firm under Australian Finance Group (AFG), we provide unbiased, transparent access to Australia's Big 4 banks, regional credit unions, specialized non-banks, and fintech lending partners.
+        </p>
+
+        <!-- Quick Summary Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-outline-variant/30">
+          <div class="bg-white p-4 rounded-xl border border-outline-variant/40 shadow-sm">
+            <span class="block text-2xl md:text-3xl font-bold text-primary">69</span>
+            <span class="text-xs text-on-surface-variant font-medium">Lenders &amp; Partners</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-outline-variant/40 shadow-sm">
+            <span class="block text-2xl md:text-3xl font-bold text-primary">100%</span>
+            <span class="text-xs text-on-surface-variant font-medium">Best Interests Duty</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-outline-variant/40 shadow-sm">
+            <span class="block text-2xl md:text-3xl font-bold text-primary">$0</span>
+            <span class="text-xs text-on-surface-variant font-medium">Broker Fee For You*</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-outline-variant/40 shadow-sm">
+            <span class="block text-2xl md:text-3xl font-bold text-primary">389087</span>
+            <span class="text-xs text-on-surface-variant font-medium">ACL Licence</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Interactive Filter & Search Controls -->
+    <section class="py-8 bg-surface-container-lowest border-b border-outline-variant/40">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="flex flex-col lg:flex-row gap-4 justify-between items-center">
+          
+          <!-- Category Tabs -->
+          <div class="flex flex-wrap gap-2 items-center justify-center lg:justify-start w-full lg:w-auto" id="category-filter-container">
+            <button class="filter-tab active px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-primary text-white shadow-sm" data-category="all">
+              All (69)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="majors">
+              Major Banks (9)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="afg">
+              AFG Home Loans (6)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="national">
+              National & Regional (13)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="mutuals">
+              Credit Unions & Mutuals (16)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="specialist">
+              Specialist & Non-Bank (14)
+            </button>
+            <button class="filter-tab px-4 py-2 rounded-lg font-label-md text-label-md font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-ice hover:text-primary" data-category="partner">
+              Asset & Personal Finance (11)
+            </button>
+          </div>
+
+          <!-- Live Search Input -->
+          <div class="relative w-full lg:w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-xl">search</span>
+            <input 
+              type="text" 
+              id="lender-search-input" 
+              placeholder="Search 69 lenders..." 
+              class="w-full pl-10 pr-4 py-2.5 bg-surface-ice border border-outline-variant/60 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-inner"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Lender Cards Grid Section -->
+    <section class="py-16 px-margin-mobile md:px-margin-desktop bg-background">
+      <div class="max-w-container-max mx-auto">
+        
+        <!-- Results Counter & Info -->
+        <div class="flex justify-between items-center mb-8 pb-4 border-b border-outline-variant/40">
+          <div>
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">Approved Lending Panel</h2>
+            <p class="text-sm text-on-surface-variant" id="results-count-text">Showing all 69 lenders, home loan products, and lending partners</p>
+          </div>
+          <a href="../pages/contact.html" class="hidden sm:inline-flex items-center gap-2 text-primary font-bold hover:text-luxury-gold text-sm transition-colors">
+            Need advice for your situation? <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="lenders-grid">
+          <!-- Cards dynamically populated or statically rendered with rich attributes -->
+        </div>
+
+        <!-- No Results Fallback -->
+        <div id="no-results-message" class="hidden text-center py-16 bg-surface-ice rounded-2xl border border-outline-variant/40 my-8">
+          <span class="material-symbols-outlined text-5xl text-outline mb-2">search_off</span>
+          <h3 class="text-xl font-bold text-primary mb-1">No matching lenders found</h3>
+          <p class="text-sm text-on-surface-variant max-w-md mx-auto mb-4">We couldn't find any lenders matching your query. Try a different search term or clear your filters.</p>
+          <button id="reset-filters-btn" class="bg-primary text-white px-5 py-2 rounded-lg font-label-md text-sm font-semibold hover:bg-primary-container transition-all">
+            Reset Filters
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Why Access to 65+ Lenders Matters -->
+    <section class="py-20 bg-surface-container-low border-t border-outline-variant/40">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-outline-variant/50 text-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+            The Mortgage Broker Advantage
+          </span>
+          <h2 class="font-headline-lg text-headline-lg text-primary font-bold">
+            Why Our Extensive Panel Works In Your Favor
+          </h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant">
+            Going straight to a single bank gives you only their products. Partnering with Lend Craft Mortgage unlocks tailored choices across the entire Australian market.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Benefit 1 -->
+          <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/40 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">verified_user</span>
+            </div>
+            <h3 class="font-headline-md text-xl font-bold text-primary">Best Interests Duty (BID)</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              By law under the National Consumer Credit Protection Act, mortgage brokers must act strictly in your best interests—not the lenders'. Banks only sell their own products.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/40 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-luxury-gold/15 text-luxury-gold flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">savings</span>
+            </div>
+            <h3 class="font-headline-md text-xl font-bold text-primary">Maximize Borrowing Power & Savings</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              Different lenders assess living expenses, overtime, bonuses, and rental yields drastically differently. We match your scenario with the lender offering the highest borrowing capacity and lowest rate.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/40 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-accent-green/15 text-accent-green flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">tune</span>
+            </div>
+            <h3 class="font-headline-md text-xl font-bold text-primary">Niche & Specialist Approvals</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              Whether you are self-employed with 1-year tax returns, utilizing the First Home Guarantee scheme, buying through SMSF, or requiring low-doc loans, our specialist lenders deliver solutions.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation CTA -->
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary text-white relative overflow-hidden">
+      <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-luxury-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-container-max mx-auto relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+        <div class="max-w-2xl space-y-4 text-center lg:text-left">
+          <span class="text-xs uppercase tracking-widest font-bold text-luxury-gold">Personalized Loan Structuring</span>
+          <h2 class="font-headline-lg text-headline-lg font-bold text-white leading-tight">
+            Ready to find which of these 65+ lenders gives you the best deal?
+          </h2>
+          <p class="text-white/80 font-body-lg">
+            Let our experienced broker Sanjeev Sharma run a complimentary comparison across all accredited lenders based on your exact deposit, income, and goals.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+          <a href="../pages/contact.html" class="bg-luxury-gold hover:bg-luxury-gold/90 text-primary font-bold px-8 py-4 rounded-xl text-center shadow-lg transition-transform scale-98-active font-label-md">
+            Book Free Loan Assessment
+          </a>
+          <a href="tel:0470347232" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-8 py-4 rounded-xl text-center flex items-center justify-center gap-2 transition-all font-label-md">
+            <span class="material-symbols-outlined text-lg">call</span>
+            Call 0470347232
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Client Script for Search & Filtering -->
+  <script>
+    const lendersData = [
+      // Major Banks (9)
+      { name: "Commonwealth Bank", category: "majors", type: "Big 4 Bank", badgeColor: "bg-amber-500/10 text-amber-800 border-amber-500/20", icon: "account_balance", desc: "Australia's largest retail bank offering comprehensive digital banking, flexible loan features, and competitive packages." },
+      { name: "Westpac", category: "majors", type: "Big 4 Bank", badgeColor: "bg-red-500/10 text-red-800 border-red-500/20", icon: "account_balance", desc: "Major Australian bank offering versatile multi-offset accounts, family security guarantee, and Premier Advantage packages." },
+      { name: "ANZ", category: "majors", type: "Big 4 Bank", badgeColor: "bg-blue-500/10 text-blue-800 border-blue-500/20", icon: "account_balance", desc: "Leading major banking institution with robust home loan offerings for owner-occupiers and property investors." },
+      { name: "NAB", category: "majors", type: "Big 4 Bank", badgeColor: "bg-red-600/10 text-red-900 border-red-600/20", icon: "account_balance", desc: "National Australia Bank providing competitive fixed and variable mortgage options, business lending, and redraw facilities." },
+      { name: "Bankwest", category: "majors", type: "Major Bank Subsidiary", badgeColor: "bg-orange-500/10 text-orange-800 border-orange-500/20", icon: "account_balance", desc: "CBA subsidiary renowned for market-leading digital tools, flexible multiple offset features, and fast pre-approvals." },
+      { name: "Bank of Melbourne", category: "majors", type: "Regional Major Bank", badgeColor: "bg-purple-500/10 text-purple-800 border-purple-500/20", icon: "account_balance", desc: "Victorian banking specialist backed by Westpac Group with tailored local lending and regional property expertise." },
+      { name: "Bank SA", category: "majors", type: "Regional Major Bank", badgeColor: "bg-blue-600/10 text-blue-800 border-blue-600/20", icon: "account_balance", desc: "South Australia's historic bank offering regional home buyer support, low-deposit lending, and investment loans." },
+      { name: "St.George", category: "majors", type: "Major Bank Network", badgeColor: "bg-emerald-600/10 text-emerald-800 border-emerald-600/20", icon: "account_balance", desc: "Westpac Group partner with competitive family pledge options, tailored home loan packages, and responsive service." },
+      { name: "ubank", category: "majors", type: "Digital Major Subsidiary", badgeColor: "bg-indigo-500/10 text-indigo-800 border-indigo-500/20", icon: "devices", desc: "NAB's high-tech digital bank offering low-rate, no-fuss home loans with fast digital turnarounds and zero ongoing fees." },
+
+      // AFG Home Loans Suite (6)
+      { name: "AFG Home Loans – Align", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-emerald-500/10 text-emerald-800 border-emerald-500/20", icon: "home", desc: "Competitive variable & fixed home loan solutions with 100% offset capabilities and fee transparency." },
+      { name: "AFG Home Loans – Alpha", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-amber-500/10 text-amber-800 border-amber-500/20", icon: "home", desc: "Feature-packed residential loan product backed by leading institutional funding and flexible features." },
+      { name: "AFG Home Loans – Bright", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-teal-500/10 text-teal-800 border-teal-500/20", icon: "home", desc: "Specialist solutions for prime and near-prime borrowers with competitive interest rates and versatile criteria." },
+      { name: "AFG Home Loans – Edge", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-lime-600/10 text-lime-800 border-lime-600/20", icon: "home", desc: "Cost-effective mortgage options designed for straightforward purchasing, refinancing, and fast settlement." },
+      { name: "AFG Home Loans – Options", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-red-500/10 text-red-800 border-red-500/20", icon: "home", desc: "Tailored lending flexibility for diverse client scenarios, self-employed applicants, and portfolio investors." },
+      { name: "AFG Home Loans – Retro", category: "afg", type: "AFG Home Loan Suite", badgeColor: "bg-cyan-600/10 text-cyan-800 border-cyan-600/20", icon: "home", desc: "Established mortgage product offering transparent pricing, fee-free redraws, and straightforward loan maintenance." },
+
+      // National & Regional Banks (13)
+      { name: "Macquarie Bank", category: "national", type: "National Bank", badgeColor: "bg-slate-700/10 text-slate-800 border-slate-700/20", icon: "account_balance", desc: "Award-winning lender celebrated for fast turnaround times, multiple offset accounts, and sleek mobile app." },
+      { name: "ING", category: "national", type: "National Bank", badgeColor: "bg-orange-600/10 text-orange-800 border-orange-600/20", icon: "account_balance", desc: "Consistently competitive interest rates, popular Orange Advantage offset, and high customer satisfaction." },
+      { name: "Suncorp Bank", category: "national", type: "National Bank", badgeColor: "bg-amber-600/10 text-amber-800 border-amber-600/20", icon: "account_balance", desc: "Comprehensive home loan and banking solutions with green home loan discounts for energy-efficient homes." },
+      { name: "AMP Bank", category: "national", type: "National Bank", badgeColor: "bg-blue-600/10 text-blue-800 border-blue-600/20", icon: "account_balance", desc: "Flexible loan packages, master facility options, and tailored products for wealth builders and investors." },
+      { name: "Bank of QLD (BOQ)", category: "national", type: "National Bank", badgeColor: "bg-sky-600/10 text-sky-800 border-sky-600/20", icon: "account_balance", desc: "Owner-managed branch model delivering personalized relationship service and competitive mortgage terms." },
+      { name: "Bank of Sydney", category: "national", type: "National Bank", badgeColor: "bg-blue-800/10 text-blue-900 border-blue-800/20", icon: "account_balance", desc: "Boutique national bank specializing in residential property loans and commercial property finance solutions." },
+      { name: "Bank of China", category: "national", type: "International Bank", badgeColor: "bg-red-700/10 text-red-900 border-red-700/20", icon: "language", desc: "Global powerhouse offering competitive Australian residential mortgage packages and foreign currency services." },
+      { name: "ME", category: "national", type: "National Bank", badgeColor: "bg-pink-600/10 text-pink-900 border-pink-600/20", icon: "account_balance", desc: "Straightforward home loans with low rates, transparent fees, and industry-super roots." },
+      { name: "MyState", category: "national", type: "National Bank", badgeColor: "bg-emerald-700/10 text-emerald-900 border-emerald-700/20", icon: "account_balance", desc: "Modern banking offering competitive home loans across Australia with friendly, responsive customer support." },
+      { name: "Auswide Bank", category: "national", type: "National Bank", badgeColor: "bg-purple-600/10 text-purple-900 border-purple-600/20", icon: "account_balance", desc: "Australian regional bank providing flexible residential home loans and personal financial products." },
+      { name: "Great Southern Bank", category: "national", type: "Customer-First Bank", badgeColor: "bg-teal-700/10 text-teal-900 border-teal-700/20", icon: "account_balance", desc: "Australia's largest customer-owned bank, helping everyday Australians buy and own their own homes." },
+      { name: "Judo Bank", category: "national", type: "Challenger Bank", badgeColor: "bg-green-700/10 text-green-900 border-green-700/20", icon: "account_balance", desc: "Purpose-built challenger bank focusing on dedicated relationship lending and SME finance." },
+      { name: "HSBC", category: "national", type: "International Bank", badgeColor: "bg-red-700/10 text-red-900 border-red-700/20", icon: "language", desc: "Global premier banking with attractive interest rates for high-net-worth clients and residential home buyers." },
+
+      // Credit Unions & Mutual Banks (16)
+      { name: "Australian Military Bank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-blue-900/10 text-blue-950 border-blue-900/20", icon: "shield", desc: "Dedicated banking and preferential home loan solutions for defence personnel and their families." },
+      { name: "Bank Australia", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-emerald-700/10 text-emerald-900 border-emerald-700/20", icon: "eco", desc: "Certified B Corp customer-owned bank focused on clean money, conservation, and responsible ethical lending." },
+      { name: "BCU", category: "mutuals", type: "Credit Union", badgeColor: "bg-orange-700/10 text-orange-900 border-orange-700/20", icon: "diversity_3", desc: "Community-driven credit union delivering competitive mortgage rates across NSW and Queensland." },
+      { name: "Beyond Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-purple-800/10 text-purple-950 border-purple-800/20", icon: "diversity_3", desc: "Award-winning customer-owned bank reinvesting 100% of profits for member and community benefit." },
+      { name: "Credit Union SA", category: "mutuals", type: "Credit Union", badgeColor: "bg-amber-700/10 text-amber-900 border-amber-700/20", icon: "groups", desc: "South Australia's largest credit union offering personalized service and tailored borrowing solutions." },
+      { name: "Firefighters Mutual Bank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-red-700/10 text-red-900 border-red-700/20", icon: "local_fire_department", desc: "Exclusive, dedicated banking services for emergency service workers and their immediate families." },
+      { name: "Health Professionals Bank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-cyan-800/10 text-cyan-950 border-cyan-800/20", icon: "medical_services", desc: "Specialist banking and loan products tailored specifically for healthcare workers and medical professionals." },
+      { name: "Heritage Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-blue-800/10 text-blue-950 border-blue-800/20", icon: "account_balance", desc: "People-first mutual bank offering competitive loans with an authentic customer-centric ethos." },
+      { name: "Heartland Reverse Mortgages", category: "specialist", type: "Reverse Mortgage Leader", badgeColor: "bg-slate-800/10 text-slate-900 border-slate-800/20", icon: "elderly", desc: "Australia's leading specialist provider of reverse mortgages and equity release for retirees." },
+      { name: "Hume Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-blue-700/10 text-blue-900 border-blue-700/20", icon: "groups", desc: "Regional customer-owned bank offering competitive home loans across regional and metropolitan Australia." },
+      { name: "Newcastle Permanent", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-zinc-800/10 text-zinc-900 border-zinc-800/20", icon: "account_balance", desc: "One of Australia's largest and most trusted customer-owned financial institutions with strong member ratings." },
+      { name: "P&N Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-red-700/10 text-red-900 border-red-700/20", icon: "diversity_3", desc: "Western Australia's largest customer-owned bank providing tailored personal and mortgage finance." },
+      { name: "People First Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-teal-800/10 text-teal-950 border-teal-800/20", icon: "groups", desc: "Created through the merger of Heritage & People's Choice, delivering exceptional member-owned banking." },
+      { name: "QBank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-blue-900/10 text-blue-950 border-blue-900/20", icon: "security", desc: "Dedicated financial services for Queensland Police, Fire, Ambulance, and emergency services." },
+      { name: "Queensland Country Bank", category: "mutuals", type: "Customer-Owned Bank", badgeColor: "bg-amber-600/10 text-amber-900 border-amber-600/20", icon: "agriculture", desc: "Regional community banking focused on helping Queenslanders achieve home ownership." },
+      { name: "Teachers Mutual Bank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-teal-700/10 text-teal-900 border-teal-700/20", icon: "school", desc: "Specialist financial institution dedicated to teachers, educators, and their families." },
+      { name: "UniBank", category: "mutuals", type: "Mutual Bank", badgeColor: "bg-indigo-800/10 text-indigo-950 border-indigo-800/20", icon: "history_edu", desc: "Dedicated banking and home loan solutions tailored for university staff, students, and graduates." },
+
+      // Specialist & Non-Bank Lenders (14)
+      { name: "ASCF", category: "specialist", type: "Specialist Fund", badgeColor: "bg-zinc-700/10 text-zinc-900 border-zinc-700/20", icon: "domain", desc: "Australian Secure Capital Fund providing short-term property finance and mortgage investment." },
+      { name: "Firstmac", category: "specialist", type: "Non-Bank Specialist", badgeColor: "bg-emerald-700/10 text-emerald-900 border-emerald-700/20", icon: "monetization_on", desc: "Australia's leading non-bank lender delivering innovative, low-cost mortgage solutions." },
+      { name: "Funding", category: "specialist", type: "Digital Non-Bank", badgeColor: "bg-sky-700/10 text-sky-900 border-sky-700/20", icon: "trending_up", desc: "Fast-approval bridging, commercial, and specialist property lending technology platform." },
+      { name: "Granite Home Loans", category: "specialist", type: "Specialist Lender", badgeColor: "bg-slate-700/10 text-slate-900 border-slate-700/20", icon: "foundation", desc: "Tailored lending solutions for self-managed super funds (SMSF) and complex residential deals." },
+      { name: "Hejaz", category: "specialist", type: "Islamic Finance Leader", badgeColor: "bg-amber-700/10 text-amber-900 border-amber-700/20", icon: "verified", desc: "100% Sharia-compliant Islamic property finance and ethical wealth solutions in Australia." },
+      { name: "HomeStart Finance", category: "specialist", type: "Government-Backed Initiative", badgeColor: "bg-blue-700/10 text-blue-900 border-blue-700/20", icon: "holiday_village", desc: "South Australian government organisation helping buyers achieve home ownership with low deposits." },
+      { name: "Keystart", category: "specialist", type: "Government-Backed Initiative", badgeColor: "bg-orange-700/10 text-orange-900 border-orange-700/20", icon: "key", desc: "WA government initiative providing low-deposit home loans with no lender's mortgage insurance (LMI)." },
+      { name: "La Trobe Financial", category: "specialist", type: "Credit Asset Manager", badgeColor: "bg-blue-800/10 text-blue-950 border-blue-800/20", icon: "finance_mode", desc: "Specialist non-bank credit solutions for self-employed, SMSF, and complex borrower structures." },
+      { name: "Liberty", category: "specialist", type: "Specialist Non-Bank", badgeColor: "bg-cyan-700/10 text-cyan-900 border-cyan-700/20", icon: "bolt", desc: "Pioneering non-bank lender offering flexible, customized solutions for unique borrowing needs." },
+      { name: "MSquared Capital", category: "specialist", type: "Commercial & Private Credit", badgeColor: "bg-emerald-800/10 text-emerald-950 border-emerald-800/20", icon: "apartment", desc: "Bespoke property financing and private credit solutions for property investors and developers." },
+      { name: "Pepper Money", category: "specialist", type: "Specialist Non-Bank", badgeColor: "bg-red-700/10 text-red-900 border-red-700/20", icon: "psychology", desc: "Market leader in non-conforming and flexible home loans for self-employed and non-traditional credit." },
+      { name: "RedZed", category: "specialist", type: "Self-Employed Specialist", badgeColor: "bg-red-800/10 text-red-950 border-red-800/20", icon: "work", desc: "Purpose-built lender designed specifically for self-employed business owners and contractors." },
+      { name: "Resimac", category: "specialist", type: "Non-Bank Pioneer", badgeColor: "bg-indigo-700/10 text-indigo-900 border-indigo-700/20", icon: "real_estate_agent", desc: "Pioneering Australian non-bank with over 35 years of residential mortgage lending experience." },
+
+      // Asset, Personal & Alternative Finance Partners (11)
+      { name: "AFS (Automotive Financial Services)", category: "partner", type: "Vehicle & Asset Finance", badgeColor: "bg-blue-600/10 text-blue-900 border-blue-600/20", icon: "directions_car", desc: "Specialized automotive finance solutions for consumer and commercial vehicle purchases." },
+      { name: "Alex Bank", category: "partner", type: "Digital Banking Partner", badgeColor: "bg-purple-700/10 text-purple-900 border-purple-700/20", icon: "savings", desc: "Fast, digital personal lending and savings accounts with no hidden ongoing account fees." },
+      { name: "AMMF", category: "partner", type: "Marine & Leisure Finance", badgeColor: "bg-cyan-700/10 text-cyan-900 border-cyan-700/20", icon: "two_wheeler", desc: "Specialist leisure finance for motorcycles, boats, watercraft, and outdoor recreational vehicles." },
+      { name: "Angle Finance", category: "partner", type: "Commercial Equipment Finance", badgeColor: "bg-pink-700/10 text-pink-950 border-pink-700/20", icon: "construction", desc: "Non-bank equipment and commercial auto financier supporting Australian small businesses." },
+      { name: "GreenLight Auto", category: "partner", type: "Consumer Auto Finance", badgeColor: "bg-emerald-700/10 text-emerald-900 border-emerald-700/20", icon: "directions_car", desc: "Fast and accessible vehicle financing options for diverse consumer credit backgrounds." },
+      { name: "Latitude", category: "partner", type: "Consumer Finance", badgeColor: "bg-blue-700/10 text-blue-900 border-blue-700/20", icon: "credit_card", desc: "Established provider of personal loans, credit cards, and flexible consumer finance products." },
+      { name: "MoneyPlace", category: "partner", type: "Personal Loan Platform", badgeColor: "bg-teal-700/10 text-teal-900 border-teal-700/20", icon: "payments", desc: "Award-winning digital personal loan provider offering personalized risk-based interest rates." },
+      { name: "NOW Finance", category: "partner", type: "Personal Loan Specialist", badgeColor: "bg-orange-700/10 text-orange-950 border-orange-700/20", icon: "price_check", desc: "Dedicated Australian personal loan specialist offering fixed-rate unsecured and secured loans." },
+      { name: "Plenti", category: "partner", type: "Fintech Lending Partner", badgeColor: "bg-indigo-700/10 text-indigo-900 border-indigo-700/20", icon: "electric_bolt", desc: "Fast fintech lending across automotive, personal loans, and renewable energy green loans." },
+      { name: "SocietyOne", category: "partner", type: "P2P & Personal Loans", badgeColor: "bg-emerald-800/10 text-emerald-950 border-emerald-800/20", icon: "groups_2", desc: "Digital lending pioneer providing fast, transparent fixed-rate personal loans and debt consolidation." },
+      { name: "Wisr", category: "partner", type: "Fintech & Financial Wellness", badgeColor: "bg-cyan-800/10 text-cyan-950 border-cyan-800/20", icon: "loyalty", desc: "Purpose-led neo-lender combining competitive personal and car loans with smart credit coaching." }
+    ];
+
+    function renderLenders(items) {
+      const grid = document.getElementById("lenders-grid");
+      const noResults = document.getElementById("no-results-message");
+      const countText = document.getElementById("results-count-text");
+
+      if (items.length === 0) {
+        grid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        countText.textContent = "Showing 0 lenders";
+        return;
+      }
+
+      noResults.classList.add("hidden");
+      countText.textContent = `Showing ${items.length} ${items.length === 1 ? 'lender' : 'lenders and partners'}`;
+
+      grid.innerHTML = items.map(lender => `
+        <div class="bg-surface-container-lowest border border-outline-variant/50 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-luxury-gold/50 transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center border border-outline-variant/30 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <span class="material-symbols-outlined text-xl">${lender.icon}</span>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border ${lender.badgeColor}">
+                ${lender.type}
+              </span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-lg font-bold text-primary leading-snug group-hover:text-luxury-gold transition-colors">
+                ${lender.name}
+              </h3>
+              <p class="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">
+                ${lender.desc}
+              </p>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-outline-variant/30 mt-5 flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-primary/70">AFG Accredited</span>
+            <a href="../pages/contact.html" class="text-xs font-bold text-primary group-hover:text-luxury-gold flex items-center gap-0.5 group-hover:translate-x-0.5 transition-all">
+              Inquire <span class="material-symbols-outlined text-sm">chevron_right</span>
+            </a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentCategory = "all";
+      let searchQuery = "";
+
+      const filterButtons = document.querySelectorAll("#category-filter-container .filter-tab");
+      const searchInput = document.getElementById("lender-search-input");
+      const resetBtn = document.getElementById("reset-filters-btn");
+
+      function applyFilter() {
+        const filtered = lendersData.filter(item => {
+          const matchesCategory = currentCategory === "all" || item.category === currentCategory;
+          const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                item.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+          return matchesCategory && matchesSearch;
+        });
+        renderLenders(filtered);
+      }
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach(b => {
+            b.classList.remove("active", "bg-primary", "text-white", "shadow-sm");
+            b.classList.add("bg-surface-container-low", "text-on-surface-variant");
+          });
+          btn.classList.add("active", "bg-primary", "text-white", "shadow-sm");
+          btn.classList.remove("bg-surface-container-low", "text-on-surface-variant");
+          currentCategory = btn.getAttribute("data-category");
+          applyFilter();
+        });
+      });
+
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value.trim();
+        applyFilter();
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          searchInput.value = "";
+          searchQuery = "";
+          currentCategory = "all";
+          filterButtons.forEach((b, idx) => {
+            if (idx === 0) {
+              b.classList.add("active", "bg-primary", "text-white", "shadow-sm");
+              b.classList.remove("bg-surface-container-low", "text-on-surface-variant");
+            } else {
+              b.classList.remove("active", "bg-primary", "text-white", "shadow-sm");
+              b.classList.add("bg-surface-container-low", "text-on-surface-variant");
+            }
+          });
+          applyFilter();
+        });
+      }
+
+      // Initial render
+      renderLenders(lendersData);
+    });
+  </script>
+
+</body>
+</html>
