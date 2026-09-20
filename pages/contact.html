@@ -13,6 +13,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <script src="../script/script.js"></script>
     <link href="../style/style.css" rel="stylesheet" />
+    <style>
+      /* Ensure all form controls strictly inherit website font ('Inter') */
+      input, select, textarea, button, optgroup, option, .multiselect-trigger {
+        font-family: var(--font-body, 'Inter', sans-serif) !important;
+      }
+      .form-label-thick {
+        font-family: var(--font-heading, 'Sora', sans-serif) !important;
+      }
+      /* Remove Tailwind Forms background SVG chevron completely so only custom Material symbol shows */
+      select.select-clean-arrow,
+      select.form-input-thick-label {
+        background-image: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+      }
+      /* Field error border styling */
+      .form-input-thick-label.has-error {
+        border-bottom-color: #ef4444 !important;
+      }
+      /* Subtle shake animation for error focus */
+      @keyframes fieldShake {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-4px); }
+        40%, 80% { transform: translateX(4px); }
+      }
+      .animate-shake {
+        animation: fieldShake 0.35s ease-in-out;
+      }
+    </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col font-body-md">
 <!-- Top Navigation Placeholder -->
@@ -41,55 +71,204 @@
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2 md:hidden">Send us a message</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">We aim to respond to all inquiries within 24 hours.</p>
 </div>
-<form action="#" class="space-y-8" method="POST">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- First Name -->
-<div>
-<label class="form-label-thick" for="firstName">First Name</label>
-<input class="form-input-thick-label" id="firstName" name="firstName" placeholder="Jane" required="" type="text"/>
-</div>
-<!-- Last Name -->
-<div>
-<label class="form-label-thick" for="lastName">Last Name</label>
-<input class="form-input-thick-label" id="lastName" name="lastName" placeholder="Doe" required="" type="text"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Email -->
-<div>
-<label class="form-label-thick" for="email">Email Address</label>
-<input class="form-input-thick-label" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
-</div>
-<!-- Phone -->
-<div>
-<label class="form-label-thick" for="phone">Phone Number</label>
-<input class="form-input-thick-label" id="phone" name="phone" placeholder="0400 000 000" type="tel"/>
-</div>
-</div>
-<!-- Inquiry Type -->
-<div>
-<label class="form-label-thick" for="inquiryType">How can we help you?</label>
-<select class="form-input-thick-label pb-2 appearance-none bg-no-repeat bg-right" id="inquiryType" name="inquiryType" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233f484a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E');">
-<option disabled="" selected="" value="">Select an option</option>
-<option value="first-home">First Home Buyer</option>
-<option value="refinance">Refinancing</option>
-<option value="investment">Investment Property</option>
-<option value="other">General Inquiry</option>
-</select>
-</div>
-<!-- Message -->
-<div>
-<label class="form-label-thick" for="message">Message</label>
-<textarea class="form-input-thick-label resize-none" id="message" name="message" placeholder="Briefly describe your situation..." rows="4"></textarea>
-</div>
-<!-- Submit -->
-<div class="pt-4 flex items-center justify-between">
-<p class="font-label-sm text-label-sm text-on-surface-variant hidden md:block">Your data is secured by industry standards.</p>
-<button class="w-full md:w-auto bg-[#B0E0E9] text-on-secondary-fixed-variant font-label-md text-label-md px-8 py-4 rounded font-bold hover:bg-primary-fixed transition-colors flex items-center justify-center gap-2" type="submit">
-                                Send Message
-                                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-</button>
-</div>
+<form id="contact-inquiry-form" class="space-y-6" method="POST" novalidate onsubmit="handleContactSubmit(event)">
+  <!-- Success Notification Banner -->
+  <div id="contact-success-alert" class="hidden p-6 rounded-xl bg-emerald-50 border-2 border-emerald-400 text-emerald-900 shadow-md transition-all duration-300">
+    <div class="flex items-start gap-3">
+      <span class="material-symbols-outlined text-emerald-600 text-3xl shrink-0 mt-0.5">check_circle</span>
+      <div>
+        <h4 class="font-bold text-base text-emerald-950">Thank you! Your enquiry has been sent.</h4>
+        <p class="text-sm text-emerald-800 mt-1">A Lend Craft Mortgage specialist will review your details and contact you shortly via your preferred method.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Name -->
+  <div class="form-field-group" id="group-fullName">
+    <label class="form-label-thick" for="fullName">Full Name <span class="text-luxury-gold">*</span></label>
+    <input class="form-input-thick-label" id="fullName" name="fullName" placeholder="e.g. Sarah Jenkins" type="text"/>
+    <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+      <span class="error-text">Please enter your full name.</span>
+    </p>
+  </div>
+
+  <!-- Mobile Number & Email Address -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="form-field-group" id="group-mobileNumber">
+      <label class="form-label-thick" for="mobileNumber">Mobile Number <span class="text-luxury-gold">*</span></label>
+      <input class="form-input-thick-label" id="mobileNumber" name="mobileNumber" placeholder="e.g. 0400 123 456" type="tel"/>
+      <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+        <span class="error-text">Please enter your mobile number.</span>
+      </p>
+    </div>
+    <div class="form-field-group" id="group-email">
+      <label class="form-label-thick" for="email">Email Address <span class="text-luxury-gold">*</span></label>
+      <input class="form-input-thick-label" id="email" name="email" placeholder="e.g. sarah@example.com" type="email"/>
+      <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+        <span class="error-text">Please enter your email address.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- What would you like help with? (Single select dropdown) -->
+  <div class="form-field-group" id="group-helpWith">
+    <label class="form-label-thick" for="helpWith">What would you like help with? <span class="text-luxury-gold">*</span></label>
+    <div class="relative">
+      <select class="form-input-thick-label select-clean-arrow pb-2 pr-10 bg-transparent cursor-pointer" id="helpWith" name="helpWith" style="background-image: none !important;">
+        <option disabled="" selected="" value="">Select an option</option>
+        <option value="Buying my first home">Buying my first home</option>
+        <option value="Buying an investment property">Buying an investment property</option>
+        <option value="Refinancing my current loan">Refinancing my current loan</option>
+        <option value="Construction loan">Construction loan</option>
+        <option value="Using property equity">Using property equity</option>
+        <option value="Self-employed home loan">Self-employed home loan</option>
+        <option value="other">other</option>
+      </select>
+      <span class="material-symbols-outlined pointer-events-none absolute right-0 bottom-2 text-slate text-xl">expand_more</span>
+    </div>
+    <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+      <span class="error-text">Please select what you would like help with.</span>
+    </p>
+  </div>
+
+  <!-- Approximate property price or loan amount & Postcode -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="form-field-group" id="group-loanAmount">
+      <label class="form-label-thick" for="loanAmount">Approximate property price or loan amount</label>
+      <div class="relative flex items-center border-b border-outline-variant focus-within:border-primary transition-colors">
+        <span class="text-sm font-semibold text-luxury-gold pr-2 select-none">AUD $</span>
+        <input class="w-full bg-transparent py-2 text-on-surface focus:outline-none placeholder-outline-variant" id="loanAmount" name="loanAmount" placeholder="750,000" type="text" inputmode="numeric"/>
+      </div>
+      <p class="text-[11px] text-on-surface-variant/70 mt-1">Enter estimated AUD value</p>
+    </div>
+    <div class="form-field-group" id="group-suburbPostcode">
+      <label class="form-label-thick" for="suburbPostcode">Your suburb or postcode <span class="text-luxury-gold">*</span></label>
+      <input class="form-input-thick-label" id="suburbPostcode" name="suburbPostcode" placeholder="e.g. Parramatta 2150" type="text"/>
+      <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+        <span class="error-text">Please enter your suburb or postcode.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Are you employed or self-employed? (Single select dropdown) -->
+  <div class="form-field-group" id="group-employmentStatus">
+    <label class="form-label-thick" for="employmentStatus">Are you employed or self-employed? <span class="text-luxury-gold">*</span></label>
+    <div class="relative">
+      <select class="form-input-thick-label select-clean-arrow pb-2 pr-10 bg-transparent cursor-pointer" id="employmentStatus" name="employmentStatus" style="background-image: none !important;">
+        <option disabled="" selected="" value="">Select employment status</option>
+        <option value="PAYG employee">PAYG employee</option>
+        <option value="Self-employed">Self-employed</option>
+        <option value="Both">Both</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="material-symbols-outlined pointer-events-none absolute right-0 bottom-2 text-slate text-xl">expand_more</span>
+    </div>
+    <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+      <span class="error-text">Please select your employment status.</span>
+    </p>
+  </div>
+
+  <!-- Multi-select Row: Preferred Time & Contact Method -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- When would you prefer to be contacted? -->
+    <div class="relative multiselect-container" id="time-multiselect">
+      <label class="form-label-thick">When would you prefer to be contacted?</label>
+      <button type="button" class="multiselect-trigger w-full text-left form-input-thick-label pb-2 pr-8 flex items-center justify-between cursor-pointer focus:outline-none" aria-haspopup="listbox" aria-expanded="false">
+        <span class="multiselect-badge-container flex flex-wrap gap-1 items-center">
+          <span class="multiselect-placeholder text-on-surface-variant/70 text-sm">Select time(s)</span>
+        </span>
+        <span class="material-symbols-outlined text-slate text-xl transition-transform duration-200 trigger-icon shrink-0">expand_more</span>
+      </button>
+      <input type="hidden" name="preferredContactTime" id="preferredContactTime" value="" />
+      <div class="multiselect-menu hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-outline-variant/60 p-2 z-30 space-y-1">
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="Morning" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="text-sm font-medium text-on-surface">Morning <span class="text-xs text-slate ml-1">(9:00 AM – 12:00 PM)</span></span>
+        </label>
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="Afternoon" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="text-sm font-medium text-on-surface">Afternoon <span class="text-xs text-slate ml-1">(12:00 PM – 5:00 PM)</span></span>
+        </label>
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="Evening" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="text-sm font-medium text-on-surface">Evening <span class="text-xs text-slate ml-1">(5:00 PM – 8:00 PM)</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Preferred contact method -->
+    <div class="relative multiselect-container" id="method-multiselect">
+      <label class="form-label-thick">Preferred contact method</label>
+      <button type="button" class="multiselect-trigger w-full text-left form-input-thick-label pb-2 pr-8 flex items-center justify-between cursor-pointer focus:outline-none" aria-haspopup="listbox" aria-expanded="false">
+        <span class="multiselect-badge-container flex flex-wrap gap-1 items-center">
+          <span class="multiselect-placeholder text-on-surface-variant/70 text-sm">Select method(s)</span>
+        </span>
+        <span class="material-symbols-outlined text-slate text-xl transition-transform duration-200 trigger-icon shrink-0">expand_more</span>
+      </button>
+      <input type="hidden" name="preferredContactMethod" id="preferredContactMethod" value="" />
+      <div class="multiselect-menu hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-outline-variant/60 p-2 z-30 space-y-1">
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="Phone call" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="flex items-center gap-2 text-sm font-medium text-on-surface">
+            <span class="material-symbols-outlined text-base text-primary">call</span>
+            Phone call
+          </span>
+        </label>
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="Email" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="flex items-center gap-2 text-sm font-medium text-on-surface">
+            <span class="material-symbols-outlined text-base text-primary">mail</span>
+            Email
+          </span>
+        </label>
+        <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-ice cursor-pointer transition-colors">
+          <input type="checkbox" value="WhatsApp" class="multiselect-option rounded text-primary focus:ring-luxury-gold w-4 h-4" />
+          <span class="flex items-center gap-2 text-sm font-medium text-on-surface">
+            <span class="material-symbols-outlined text-base text-emerald-600">chat</span>
+            WhatsApp
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Is there anything else you would like me to know? -->
+  <div class="form-field-group" id="group-additionalNotes">
+    <label class="form-label-thick" for="additionalNotes">Is there anything else you would like me to know?</label>
+    <textarea class="form-input-thick-label resize-y min-h-[90px]" id="additionalNotes" name="additionalNotes" placeholder="Share any relevant details about your property goals, timeline, or current loan..." rows="3"></textarea>
+  </div>
+
+  <!-- Checkbox Consent -->
+  <div class="pt-2 form-field-group" id="group-privacyConsent">
+    <label class="flex items-start gap-3 cursor-pointer select-none group">
+      <input type="checkbox" id="privacyConsent" name="privacyConsent" class="mt-1 rounded border-outline-variant text-primary focus:ring-luxury-gold w-4 h-4 cursor-pointer shrink-0" />
+      <span class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+        I consent to Lend Craft Mortgage contacting me about my enquiry. I understand that the information submitted through this form is handled in accordance with the <a href="https://lendcraftmortgage.com.au/pages/privacy_policy.html" target="_blank" class="text-luxury-gold font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity">Privacy Policy</a>. <span class="text-luxury-gold">*</span>
+      </span>
+    </label>
+    <p class="field-error-msg hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-[15px] text-red-500 shrink-0">error</span>
+      <span class="error-text">Please consent to the Privacy Policy to submit your enquiry.</span>
+    </p>
+  </div>
+
+  <!-- Submit -->
+  <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-label-sm text-label-sm text-on-surface-variant hidden md:flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-base text-luxury-gold">lock</span>
+      Your information is kept strictly confidential.
+    </p>
+    <button id="submitContactBtn" class="w-full sm:w-auto bg-primary text-white font-label-md text-label-md px-8 py-4 rounded-lg font-bold hover:bg-luxury-gold hover:text-primary transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer group" type="submit">
+      <span>Send Message</span>
+      <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+    </button>
+  </div>
 </form>
 </div>
 <!-- Direct Contact Details & CTA (Right Column - Span 5) -->
@@ -147,4 +326,355 @@
 </main>
 <!-- Footer Placeholder -->
 <div id="footer-placeholder"></div>
+
+<script>
+  // Initialize Custom Multi-Select Dropdowns
+  document.addEventListener('DOMContentLoaded', function() {
+    initMultiSelects();
+    initCurrencyFormatter();
+  });
+
+  function initMultiSelects() {
+    const multiselects = document.querySelectorAll('.multiselect-container');
+
+    multiselects.forEach(container => {
+      const trigger = container.querySelector('.multiselect-trigger');
+      const menu = container.querySelector('.multiselect-menu');
+      const chevron = container.querySelector('.trigger-icon');
+      const badgeContainer = container.querySelector('.multiselect-badge-container');
+      const hiddenInput = container.querySelector('input[type="hidden"]');
+      const checkboxes = container.querySelectorAll('.multiselect-option');
+      const defaultPlaceholder = container.id === 'time-multiselect' ? 'Select preferred time(s)' : 'Select preferred method(s)';
+
+      function updateBadges() {
+        const selected = [];
+        checkboxes.forEach(cb => {
+          if (cb.checked) selected.push(cb.value);
+        });
+
+        hiddenInput.value = selected.join(', ');
+
+        if (selected.length === 0) {
+          badgeContainer.innerHTML = `<span class="multiselect-placeholder text-on-surface-variant/70 text-sm">${defaultPlaceholder}</span>`;
+        } else {
+          badgeContainer.innerHTML = '';
+          selected.forEach(val => {
+            const badge = document.createElement('span');
+            badge.className = 'inline-flex items-center gap-1 bg-primary/10 text-primary text-xs font-semibold px-2.5 py-1 rounded-md border border-primary/20 animate-fadeIn';
+            badge.innerHTML = `<span>${val}</span><button type="button" class="text-primary hover:text-red-500 font-bold ml-1 focus:outline-none" data-val="${val}">&times;</button>`;
+            
+            // Remove on clicking badge 'x'
+            badge.querySelector('button').addEventListener('click', function(e) {
+              e.stopPropagation();
+              const itemVal = this.getAttribute('data-val');
+              checkboxes.forEach(cb => {
+                if (cb.value === itemVal) cb.checked = false;
+              });
+              updateBadges();
+            });
+
+            badgeContainer.appendChild(badge);
+          });
+        }
+      }
+
+      // Toggle dropdown open/close
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = !menu.classList.contains('hidden');
+
+        // Close all other multiselect menus first
+        document.querySelectorAll('.multiselect-menu').forEach(m => {
+          if (m !== menu) m.classList.add('hidden');
+        });
+        document.querySelectorAll('.trigger-icon').forEach(icon => {
+          if (icon !== chevron) icon.classList.remove('rotate-180');
+        });
+
+        if (isOpen) {
+          menu.classList.add('hidden');
+          chevron.classList.remove('rotate-180');
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.classList.remove('hidden');
+          chevron.classList.add('rotate-180');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Prevent closing when clicking inside menu
+      menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+
+      // Handle checkbox change
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateBadges);
+      });
+    });
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.multiselect-menu').forEach(menu => {
+        menu.classList.add('hidden');
+      });
+      document.querySelectorAll('.trigger-icon').forEach(icon => {
+        icon.classList.remove('rotate-180');
+      });
+      document.querySelectorAll('.multiselect-trigger').forEach(trig => {
+        trig.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Escape key closes menus
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.multiselect-menu').forEach(menu => {
+          menu.classList.add('hidden');
+        });
+        document.querySelectorAll('.trigger-icon').forEach(icon => {
+          icon.classList.remove('rotate-180');
+        });
+      }
+    });
+  }
+
+  // AUD Currency Formatter for loan amount input
+  function initCurrencyFormatter() {
+    const loanInput = document.getElementById('loanAmount');
+    if (!loanInput) return;
+
+    loanInput.addEventListener('input', function(e) {
+      // Remove everything except numbers
+      let val = this.value.replace(/[^0-9]/g, '');
+      if (val) {
+        this.value = parseInt(val, 10).toLocaleString('en-AU');
+      } else {
+        this.value = '';
+      }
+    });
+  }
+
+  // Form Validation & Submission Handler
+  function handleContactSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('contact-inquiry-form');
+    const submitBtn = document.getElementById('submitContactBtn');
+    const successAlert = document.getElementById('contact-success-alert');
+
+    // Helper functions for field errors
+    function setFieldError(groupId, inputEl, message) {
+      const group = document.getElementById(groupId);
+      if (!group) return;
+      if (inputEl) inputEl.classList.add('has-error');
+      const errEl = group.querySelector('.field-error-msg');
+      if (errEl) {
+        const textSpan = errEl.querySelector('.error-text');
+        if (textSpan) textSpan.textContent = message;
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function clearFieldError(groupId, inputEl) {
+      const group = document.getElementById(groupId);
+      if (!group) return;
+      if (inputEl) inputEl.classList.remove('has-error');
+      const errEl = group.querySelector('.field-error-msg');
+      if (errEl) errEl.classList.add('hidden');
+    }
+
+    // Reset all error states
+    document.querySelectorAll('.form-field-group').forEach(group => {
+      const errEl = group.querySelector('.field-error-msg');
+      if (errEl) errEl.classList.add('hidden');
+      const input = group.querySelector('.form-input-thick-label, select, input[type="checkbox"]');
+      if (input) input.classList.remove('has-error');
+    });
+
+    const errors = [];
+
+    // 1. Full Name
+    const fullName = document.getElementById('fullName');
+    if (!fullName.value.trim()) {
+      errors.push({
+        groupId: 'group-fullName',
+        input: fullName,
+        message: 'Please enter your full name.'
+      });
+    }
+
+    // 2. Mobile Number
+    const mobileNumber = document.getElementById('mobileNumber');
+    const rawMobile = mobileNumber.value.trim().replace(/[\s\-\(\)]/g, '');
+    if (!mobileNumber.value.trim()) {
+      errors.push({
+        groupId: 'group-mobileNumber',
+        input: mobileNumber,
+        message: 'Please enter your mobile phone number.'
+      });
+    } else if (!/^[0-9+]{8,15}$/.test(rawMobile)) {
+      errors.push({
+        groupId: 'group-mobileNumber',
+        input: mobileNumber,
+        message: 'Please enter a valid mobile number (e.g. 0400 123 456).'
+      });
+    }
+
+    // 3. Email Address
+    const email = document.getElementById('email');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim()) {
+      errors.push({
+        groupId: 'group-email',
+        input: email,
+        message: 'Please enter your email address.'
+      });
+    } else if (!emailRegex.test(email.value.trim())) {
+      errors.push({
+        groupId: 'group-email',
+        input: email,
+        message: 'Please enter a valid email address (e.g. sarah@example.com).'
+      });
+    }
+
+    // 4. What would you like help with?
+    const helpWith = document.getElementById('helpWith');
+    if (!helpWith.value) {
+      errors.push({
+        groupId: 'group-helpWith',
+        input: helpWith,
+        message: 'Please select what you would like help with.'
+      });
+    }
+
+    // 5. Suburb or postcode
+    const suburbPostcode = document.getElementById('suburbPostcode');
+    if (!suburbPostcode.value.trim()) {
+      errors.push({
+        groupId: 'group-suburbPostcode',
+        input: suburbPostcode,
+        message: 'Please enter your suburb or postcode.'
+      });
+    }
+
+    // 6. Employment status
+    const employmentStatus = document.getElementById('employmentStatus');
+    if (!employmentStatus.value) {
+      errors.push({
+        groupId: 'group-employmentStatus',
+        input: employmentStatus,
+        message: 'Please select your employment status.'
+      });
+    }
+
+    // 7. Checkbox consent
+    const privacyConsent = document.getElementById('privacyConsent');
+    if (!privacyConsent.checked) {
+      errors.push({
+        groupId: 'group-privacyConsent',
+        input: privacyConsent,
+        message: 'Please consent to the Privacy Policy to submit your enquiry.'
+      });
+    }
+
+    // If there are errors, display them and scroll to the first invalid field
+    if (errors.length > 0) {
+      errors.forEach(({ groupId, input, message }) => {
+        setFieldError(groupId, input, message);
+
+        // Bind live clearing on correction
+        const clearEvent = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
+        const onFix = function() {
+          clearFieldError(groupId, input);
+          input.removeEventListener(clearEvent, onFix);
+        };
+        input.addEventListener(clearEvent, onFix);
+      });
+
+      // Scroll smoothly to the first field with an error
+      const firstError = errors[0];
+      const firstGroup = document.getElementById(firstError.groupId);
+      if (firstGroup) {
+        firstGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstGroup.classList.add('animate-shake');
+        setTimeout(() => firstGroup.classList.remove('animate-shake'), 400);
+
+        setTimeout(() => {
+          if (firstError.input && typeof firstError.input.focus === 'function') {
+            firstError.input.focus({ preventScroll: true });
+          }
+        }, 300);
+      }
+      return;
+    }
+
+    // Successful submission flow: Submit to Google Form
+    const originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <span class="inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>
+      Sending...
+    `;
+
+    // Google Form Endpoint & Field Mapping
+    const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSetDGRSZYwUQ1gQIKeXf8rdFndwu4iXyiFQ0RzPV3IiPfmwFw/formResponse';
+
+    const formData = new FormData();
+    formData.append('entry.2064899428', fullName.value.trim());
+    formData.append('entry.158899701', mobileNumber.value.trim());
+    formData.append('entry.789697443', email.value.trim());
+    formData.append('entry.250007144', helpWith.value);
+    formData.append('entry.1403680944', loanAmount.value.trim() ? ('AUD $' + loanAmount.value.trim()) : '');
+    formData.append('entry.1896419823', employmentStatus.value);
+    formData.append('entry.1184510909', suburbPostcode.value.trim());
+    formData.append('entry.2108830037', document.getElementById('preferredContactTime').value || 'Anytime');
+    formData.append('entry.504315873', document.getElementById('preferredContactMethod').value || 'Phone call');
+    formData.append('entry.1780305878', additionalNotes.value.trim());
+    formData.append('entry.587493831', privacyConsent.checked ? 'yes' : '');
+
+    // Submit to Google Form via Fetch
+    try {
+      fetch(GOOGLE_FORM_ACTION_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).catch(err => {
+        console.warn('Google Form submission error:', err);
+      });
+    } catch(e) {
+      console.warn('Fetch exception:', e);
+    }
+
+    // Display confirmation and feedback
+    setTimeout(() => {
+      // Reveal success notification banner
+      successAlert.classList.remove('hidden');
+
+      // Smoothly scroll directly to the success message banner
+      successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Reset form fields
+      form.reset();
+
+      // Reset multi-select dropdowns
+      document.querySelectorAll('.multiselect-container').forEach(container => {
+        const checkboxes = container.querySelectorAll('.multiselect-option');
+        checkboxes.forEach(cb => cb.checked = false);
+        const badgeContainer = container.querySelector('.multiselect-badge-container');
+        const defaultPlaceholder = container.id === 'time-multiselect' ? 'Select time(s)' : 'Select method(s)';
+        badgeContainer.innerHTML = `<span class="multiselect-placeholder text-on-surface-variant/70 text-sm">${defaultPlaceholder}</span>`;
+        container.querySelector('input[type="hidden"]').value = '';
+      });
+
+      // Restore submit button
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
+
+      // Auto dismiss success alert after 10 seconds
+      setTimeout(() => {
+        successAlert.classList.add('hidden');
+      }, 10000);
+    }, 700);
+  }
+</script>
 </body></html>
